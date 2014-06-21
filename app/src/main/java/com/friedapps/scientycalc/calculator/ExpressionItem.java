@@ -3,7 +3,7 @@ package com.friedapps.scientycalc.calculator;
 public class ExpressionItem {
     public TokenObject token;
     public TokenType type;
-
+    public int index;
 
     public enum TokenType {Bracket, Constant, Variable, Operator}
 
