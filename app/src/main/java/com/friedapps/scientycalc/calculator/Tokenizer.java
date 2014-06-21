@@ -1,6 +1,8 @@
 package com.friedapps.scientycalc.calculator;
 
 
+import android.util.Log;
+
 import com.friedapps.scientycalc.calculator.ExpressionItem.TokenType;
 import com.friedapps.scientycalc.calculator.TokenBracket.BracketType;
 import com.friedapps.scientycalc.calculator.TokenOperator.OpType;
@@ -36,7 +38,8 @@ public class Tokenizer {
                 } else {
                     // decimal point already exists
                     // TODO: throw error NumberFormatException
-                    System.out.println("Decimal point already exists");
+                    Log.d("Calc", "Decimal point already exists");
+                    return false;
                 }
             } else {
                 dnum = crumb;
@@ -60,7 +63,8 @@ public class Tokenizer {
                 tOp = AllOperators.getOperator(crumb, TokenOperator.OpType.Unary);
                 lastOperatorType = TokenOperator.OpType.Unary;
             } else {
-                System.out.println("Unknown Operator " + crumb);
+                Log.d("Calc", "Unknown Operator " + crumb);
+                return false;
             }
             ExpressionItem ei = new ExpressionItem(tOp, TokenType.Operator);
             infix.expr.add(ei);
@@ -86,7 +90,7 @@ public class Tokenizer {
         } else {
             // TODO: Handle variables
             // TODO: Token not matching
-            System.out.println("Could not understand " + crumb);
+            Log.d("Calc", "Could not understand " + crumb);
         }
         // TODO: revise this
         return true;
