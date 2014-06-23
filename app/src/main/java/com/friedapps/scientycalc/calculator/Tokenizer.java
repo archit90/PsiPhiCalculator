@@ -3,6 +3,7 @@ package com.friedapps.scientycalc.calculator;
 
 import android.util.Log;
 
+import com.friedapps.scientycalc.calculator.ButtonKeys.Keys;
 import com.friedapps.scientycalc.calculator.ExpressionItem.TokenType;
 import com.friedapps.scientycalc.calculator.TokenBracket.BracketType;
 import com.friedapps.scientycalc.calculator.TokenOperator.OpType;
@@ -22,16 +23,15 @@ public class Tokenizer {
         dnum = "";
     }
 
-    public boolean addToken(String crumb) {
+    public boolean addToken(Keys crumb) {
         // TODO: implement ctr
         boolean isDot = false, isNum = false;
-        if (crumb.length() == 0 && dnum.length() > 0) {
+        if (crumb == Keys.kAns && dnum.length() > 0) {
             TokenConstant tC = new TokenConstant(dnum);
             ExpressionItem ei = new ExpressionItem(tC, TokenType.Constant);
             infix.expr.add(ei);
-        } else if (crumb.equals(" ")) {
-            return true;
-        } else if ((isDot = crumb.equals(".")) || (isNum = (TokenConstant.getDigit(crumb) >= 0))) {
+            // TODO: Evaluate answer
+        } else if ((isDot = crumb == Keys.kDot) || (isNum = (TokenConstant.getDigit(crumb) >= 0))) {
             if (lastTokenType == TokenType.Constant) {
                 if ((isDot && dnum.indexOf('.') < 0) || isNum) {
                     dnum += crumb;
@@ -42,7 +42,7 @@ public class Tokenizer {
                     return false;
                 }
             } else {
-                dnum = crumb;
+                dnum = "" + TokenConstant.getDigit(crumb);
             }
             lastTokenType = TokenType.Constant;
         } else if (AllOperators.isOperator(crumb)) {
@@ -56,11 +56,11 @@ public class Tokenizer {
             // distinguish between Unary or Binary depending on type of lastOperator or lastBracket
             if (lastTokenType == TokenType.Constant || lastTokenType == TokenType.Variable ||
                     (lastTokenType == TokenType.Bracket && lastBracketType == BracketType.Close)) {
-                tOp = AllOperators.getOperator(crumb, TokenOperator.OpType.Binary);
+                tOp = AllOperators.getOperator(crumb, OpType.Binary);
                 lastOperatorType = TokenOperator.OpType.Binary;
             } else if ((lastTokenType == TokenType.Operator && lastOperatorType == TokenOperator.OpType.Binary) ||
                     (lastTokenType == TokenType.Bracket && lastBracketType == BracketType.Open)) {
-                tOp = AllOperators.getOperator(crumb, TokenOperator.OpType.Unary);
+                tOp = AllOperators.getOperator(crumb, OpType.Unary);
                 lastOperatorType = TokenOperator.OpType.Unary;
             } else {
                 Log.d("Calc", "Unknown Operator " + crumb);
@@ -77,7 +77,7 @@ public class Tokenizer {
                 dnum = "";
             }
             TokenBracket tB;
-            if (crumb.equals("(")) {
+            if (crumb==Keys.kBrOpen) {
                 tB = new TokenBracket(BracketType.Open);
                 lastBracketType = BracketType.Open;
             } else {

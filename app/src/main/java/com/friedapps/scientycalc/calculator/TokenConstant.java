@@ -1,5 +1,7 @@
 package com.friedapps.scientycalc.calculator;
 
+import com.friedapps.scientycalc.calculator.ButtonKeys.Keys;
+
 public class TokenConstant extends TokenObject {
     public double val;
 
@@ -23,5 +25,32 @@ public class TokenConstant extends TokenObject {
                 return c - '0';
         }
         return -1;
+    }
+
+    public static int getDigit(Keys k) {
+        switch (k) {
+            case k0:
+                return 0;
+            case k1:
+                return 1;
+            case k2:
+                return 2;
+            case k3:
+                return 3;
+            case k4:
+                return 4;
+            case k5:
+                return 5;
+            case k6:
+                return 6;
+            case k7:
+                return 7;
+            case k8:
+                return 8;
+            case k9:
+                return 9;
+            default:
+                return -1;
+        }
     }
 }

@@ -11,6 +11,7 @@ public class ButtonKeys {
         kAdd, kSubt, kMul, kDiv, kExp, kMod,
         kPlus, kMinus, kSin, kCos, kTan, kLog,
         kMC, kMR, kMemPlus, kMemMinus,
+        kBrOpen, kBrClose,
         kAns
     }
 
@@ -69,5 +70,7 @@ public class ButtonKeys {
         keySymbol.put(Keys.kMC, "");
         keySymbol.put(Keys.kMemPlus, "");
         keySymbol.put(Keys.kAns, "");
+        keySymbol.put(Keys.kBrClose, ")");
+        keySymbol.put(Keys.kBrOpen, "(");
     }
 }

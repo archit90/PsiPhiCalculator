@@ -1,5 +1,6 @@
 package com.friedapps.scientycalc.calculator;
 
+import com.friedapps.scientycalc.calculator.ButtonKeys.Keys;
 import com.friedapps.scientycalc.calculator.TokenOperator.Op;
 import com.friedapps.scientycalc.calculator.TokenOperator.OpAssoc;
 import com.friedapps.scientycalc.calculator.TokenOperator.OpType;
@@ -12,18 +13,18 @@ public class AllOperators {
 
     static {
 
-        allOps.put(Op.Add, new TokenOperator(Op.Add, "+", 550, OpAssoc.Left, OpType.Binary));
-        allOps.put(Op.Subtract, new TokenOperator(Op.Subtract, "-", 550, OpAssoc.Left, OpType.Binary));
-        allOps.put(Op.Multiply, new TokenOperator(Op.Multiply, "*", 600, OpAssoc.Left, OpType.Binary));
-        allOps.put(Op.Divide, new TokenOperator(Op.Divide, "/", 600, OpAssoc.Left, OpType.Binary));
-        allOps.put(Op.Modulus, new TokenOperator(Op.Modulus, "%", 600, OpAssoc.Left, OpType.Binary));
-        allOps.put(Op.Exponent, new TokenOperator(Op.Exponent, "^", 650, OpAssoc.Right, OpType.Binary));
-        allOps.put(Op.Plus, new TokenOperator(Op.Plus, "+", 1000, OpAssoc.Right, OpType.Unary));
-        allOps.put(Op.Minus, new TokenOperator(Op.Minus, "-", 1000, OpAssoc.Right, OpType.Unary));
-        allOps.put(Op.Sin, new TokenOperator(Op.Sin, "Sin", 800, OpAssoc.Right, OpType.Unary));
-        allOps.put(Op.Cos, new TokenOperator(Op.Cos, "Cos", 800, OpAssoc.Right, OpType.Unary));
-        allOps.put(Op.Tan, new TokenOperator(Op.Tan, "Tan", 800, OpAssoc.Right, OpType.Unary));
-        allOps.put(Op.Log, new TokenOperator(Op.Log, "Log", 800, OpAssoc.Right, OpType.Unary));
+        allOps.put(Op.Add, new TokenOperator(Op.Add, Keys.kAdd, 550, OpAssoc.Left, OpType.Binary));
+        allOps.put(Op.Subtract, new TokenOperator(Op.Subtract, Keys.kSubt, 550, OpAssoc.Left, OpType.Binary));
+        allOps.put(Op.Multiply, new TokenOperator(Op.Multiply, Keys.kMul, 600, OpAssoc.Left, OpType.Binary));
+        allOps.put(Op.Divide, new TokenOperator(Op.Divide, Keys.kDiv, 600, OpAssoc.Left, OpType.Binary));
+        allOps.put(Op.Modulus, new TokenOperator(Op.Modulus, Keys.kMod, 600, OpAssoc.Left, OpType.Binary));
+        allOps.put(Op.Exponent, new TokenOperator(Op.Exponent, Keys.kExp, 650, OpAssoc.Right, OpType.Binary));
+        allOps.put(Op.Plus, new TokenOperator(Op.Plus, Keys.kPlus, 1000, OpAssoc.Right, OpType.Unary));
+        allOps.put(Op.Minus, new TokenOperator(Op.Minus, Keys.kMinus, 1000, OpAssoc.Right, OpType.Unary));
+        allOps.put(Op.Sin, new TokenOperator(Op.Sin, Keys.kSin, 800, OpAssoc.Right, OpType.Unary));
+        allOps.put(Op.Cos, new TokenOperator(Op.Cos, Keys.kCos, 800, OpAssoc.Right, OpType.Unary));
+        allOps.put(Op.Tan, new TokenOperator(Op.Tan, Keys.kTan, 800, OpAssoc.Right, OpType.Unary));
+        allOps.put(Op.Log, new TokenOperator(Op.Log, Keys.kLog, 800, OpAssoc.Right, OpType.Unary));
     }
 
     private static final Map<Op, OpOperation> allOperations = new HashMap<Op, OpOperation>();
@@ -155,7 +156,7 @@ public class AllOperators {
 
     }
 
-    public static OpOperation getOpOperation(Op op){
+    public static OpOperation getOpOperation(Op op) {
         return allOperations.get(op);
     }
 
@@ -163,25 +164,22 @@ public class AllOperators {
         return allOps.get(op);
     }
 
-    public static TokenOperator getOperator(String op, OpType opType) {
-        for (Map.Entry<TokenOperator.Op, TokenOperator> item : allOps.entrySet()) {
+    public static TokenOperator getOperator(Keys op, OpType opType) {
+        for (Map.Entry<Op, TokenOperator> item : allOps.entrySet()) {
             TokenOperator to = item.getValue();
-            String sym = to.getSymbol();
-            if (to.getType() == opType && sym.equals(op)) {
+            if (to.getType() == opType && to.getKey() == op) {
                 return item.getValue();
             }
         }
         return null;
     }
 
-    public static boolean isOperator(String op) {
-        for (Map.Entry<TokenOperator.Op, TokenOperator> item : allOps.entrySet()) {
-            String sym = item.getValue().getSymbol();
-            if (sym.equals(op)) {
+    public static boolean isOperator(Keys k) {
+        for (Map.Entry<Op, TokenOperator> item : allOps.entrySet()) {
+            TokenOperator tOp = item.getValue();
+            if (tOp.getKey() == k)
                 return true;
-            }
         }
         return false;
     }
-
 }
