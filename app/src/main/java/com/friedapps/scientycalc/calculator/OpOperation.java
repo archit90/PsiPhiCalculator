@@ -3,10 +3,9 @@ package com.friedapps.scientycalc.calculator;
 import com.friedapps.scientycalc.calculator.TokenOperator.OpType;
 
 public abstract class OpOperation {
-    public OpType type;
 
-    public abstract ExpressionItem calcBinary(ExpressionItem opL, ExpressionItem opR);
+    public abstract TokenConstant calcBinary(TokenConstant opL, TokenConstant opR);
 
-    public abstract ExpressionItem calcUnary(ExpressionItem op);
+    public abstract TokenConstant calcUnary(TokenConstant op);
 
 }
