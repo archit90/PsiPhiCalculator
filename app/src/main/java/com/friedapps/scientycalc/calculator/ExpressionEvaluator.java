@@ -79,13 +79,13 @@ public class ExpressionEvaluator {
                     switch (tOp.getType()) {
                         case Unary:
                             t1 = operands.pop();
-                            tres = ExpressionItem.evalUnary(tOp, t1);
+                            tres = AllOperators.getOpOperation(tOp.getVal()).calcUnary(t1);
                             operands.push(tres);
                             break;
                         case Binary:
                             t2 = operands.pop();
                             t1 = operands.pop();
-                            tres = ExpressionItem.evalBinary(tOp, t1, t2);
+                            tres = AllOperators.getOpOperation(tOp.getVal()).calcBinary(t1, t2);
                             operands.push(tres);
                             break;
                     }

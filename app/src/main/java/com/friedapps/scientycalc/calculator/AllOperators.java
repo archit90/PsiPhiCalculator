@@ -191,6 +191,10 @@ public class AllOperators {
 
     }
 
+    public static OpOperation getOpOperation(Op op){
+        return allOperations.get(op);
+    }
+
     public static TokenOperator getOperator(Op op) {
         return allOps.get(op);
     }
