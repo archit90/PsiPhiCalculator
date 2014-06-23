@@ -6,16 +6,30 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.friedapps.scientycalc.calculator.ButtonKeys;
+import com.friedapps.scientycalc.calculator.ButtonKeys.Keys;
+import com.friedapps.scientycalc.calculator.Tokenizer;
 
 public class CalcActivity extends Activity {
 
     private int total = 0;
+    Tokenizer tokens;
+    TextView exprTV, resultTV;
+    String resultStr, exprStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_calc);
+        tokens = new Tokenizer();
+        resultStr = "";
+        exprStr = "";
+        exprTV = (TextView) findViewById(R.id.txtCalcExpr);
+        exprTV.setText(exprStr);
+        resultTV = (TextView) findViewById(R.id.txtResult);
+        resultTV.setText(resultStr);
     }
 
 
@@ -40,6 +54,14 @@ public class CalcActivity extends Activity {
 
     public void onButtonClick(View view) {
 
-        String btn = ((Button) view).getText().toString();
+        int btnId = ((Button) view).getId();
+        Keys key = ButtonKeys.getKey(btnId);
+        boolean keyIsSuccess = tokens.addToken(key);
+        if (keyIsSuccess) {
+            // TODO: update display
+
+        } else {
+            // TODO: display error toast
+        }
     }
 }
