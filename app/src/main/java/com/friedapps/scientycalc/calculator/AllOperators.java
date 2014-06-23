@@ -1,10 +1,11 @@
 package com.friedapps.scientycalc.calculator;
 
+import com.friedapps.scientycalc.calculator.TokenOperator.Op;
+import com.friedapps.scientycalc.calculator.TokenOperator.OpAssoc;
+import com.friedapps.scientycalc.calculator.TokenOperator.OpType;
+
 import java.util.HashMap;
 import java.util.Map;
-import com.friedapps.scientycalc.calculator.TokenOperator.Op;
-import com.friedapps.scientycalc.calculator.TokenOperator.OpType;
-import com.friedapps.scientycalc.calculator.TokenOperator.OpAssoc;
 
 public class AllOperators {
     private static final Map<Op, TokenOperator> allOps = new HashMap<Op, TokenOperator>();
@@ -31,18 +32,6 @@ public class AllOperators {
     public static TokenOperator getOperator(TokenOperator.Op op) {
         return allOps.get(op);
     }
-
-    /*
-    public static TokenOperator getOperator(String op) {
-        for (Map.Entry<Op, TokenOperator> item : allOps.entrySet()) {
-            String sym = item.getValue().getSymbol();
-            if (sym.equals(op)) {
-                return item.getValue();
-            }
-        }
-        return null;
-    }
-    */
 
     public static TokenOperator getOperator(String op, TokenOperator.OpType opType) {
         for (Map.Entry<TokenOperator.Op, TokenOperator> item : allOps.entrySet()) {

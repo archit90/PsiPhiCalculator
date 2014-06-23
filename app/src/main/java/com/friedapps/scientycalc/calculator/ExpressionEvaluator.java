@@ -102,8 +102,8 @@ public class ExpressionEvaluator {
 
             }
         }
-        ExpressionItem eres=null;
-        if(operands.size()==1) {
+        ExpressionItem eres = null;
+        if (operands.size() == 1) {
             TokenConstant tres = operands.pop();
             eres = new ExpressionItem(tres, ExpressionItem.TokenType.Constant);
         }
