@@ -1,4 +1,6 @@
-package com.friedapps.scientycalc;
+package com.friedapps.scientycalc.calculator;
+
+import com.friedapps.scientycalc.R;
 
 import java.util.HashMap;
 import java.util.Map;
