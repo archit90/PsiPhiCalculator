@@ -2,27 +2,30 @@ package com.friedapps.scientycalc.calculator;
 
 import java.util.HashMap;
 import java.util.Map;
+import com.friedapps.scientycalc.calculator.TokenOperator.Op;
+import com.friedapps.scientycalc.calculator.TokenOperator.OpType;
+import com.friedapps.scientycalc.calculator.TokenOperator.OpAssoc;
 
 public class AllOperators {
-    private static final Map<TokenOperator.Op, TokenOperator> allOps = new HashMap<TokenOperator.Op, TokenOperator>();
+    private static final Map<Op, TokenOperator> allOps = new HashMap<Op, TokenOperator>();
 
     static {
 
-        allOps.put(TokenOperator.Op.Add, new TokenOperator(TokenOperator.Op.Add, "+", 550, TokenOperator.OpAssoc.Left, TokenOperator.OpType.Binary));
-        allOps.put(TokenOperator.Op.Subtract, new TokenOperator(TokenOperator.Op.Subtract, "-", 550, TokenOperator.OpAssoc.Left, TokenOperator.OpType.Binary));
-        allOps.put(TokenOperator.Op.Multiply, new TokenOperator(TokenOperator.Op.Multiply, "*", 600, TokenOperator.OpAssoc.Left, TokenOperator.OpType.Binary));
-        allOps.put(TokenOperator.Op.Divide, new TokenOperator(TokenOperator.Op.Divide, "/", 600, TokenOperator.OpAssoc.Left, TokenOperator.OpType.Binary));
-        allOps.put(TokenOperator.Op.Modulus, new TokenOperator(TokenOperator.Op.Modulus, "%", 600, TokenOperator.OpAssoc.Left, TokenOperator.OpType.Binary));
-        allOps.put(TokenOperator.Op.Exponent, new TokenOperator(TokenOperator.Op.Exponent, "^", 650, TokenOperator.OpAssoc.Right, TokenOperator.OpType.Binary));
-        allOps.put(TokenOperator.Op.Plus, new TokenOperator(TokenOperator.Op.Plus, "+", 1000, TokenOperator.OpAssoc.Right, TokenOperator.OpType.Unary));
-        allOps.put(TokenOperator.Op.Minus, new TokenOperator(TokenOperator.Op.Minus, "-", 1000, TokenOperator.OpAssoc.Right, TokenOperator.OpType.Unary));
-        allOps.put(TokenOperator.Op.Sin, new TokenOperator(TokenOperator.Op.Sin, "Sin", 800, TokenOperator.OpAssoc.Right, TokenOperator.OpType.Unary));
-        allOps.put(TokenOperator.Op.Cos, new TokenOperator(TokenOperator.Op.Cos, "Cos", 800, TokenOperator.OpAssoc.Right, TokenOperator.OpType.Unary));
-        allOps.put(TokenOperator.Op.Tan, new TokenOperator(TokenOperator.Op.Tan, "Tan", 800, TokenOperator.OpAssoc.Right, TokenOperator.OpType.Unary));
-        allOps.put(TokenOperator.Op.Cosec, new TokenOperator(TokenOperator.Op.Cosec, "Cosec", 800, TokenOperator.OpAssoc.Right, TokenOperator.OpType.Unary));
-        allOps.put(TokenOperator.Op.Sec, new TokenOperator(TokenOperator.Op.Sec, "Sec", 800, TokenOperator.OpAssoc.Right, TokenOperator.OpType.Unary));
-        allOps.put(TokenOperator.Op.Cot, new TokenOperator(TokenOperator.Op.Cot, "Cot", 800, TokenOperator.OpAssoc.Right, TokenOperator.OpType.Unary));
-        allOps.put(TokenOperator.Op.Log, new TokenOperator(TokenOperator.Op.Log, "Log", 800, TokenOperator.OpAssoc.Right, TokenOperator.OpType.Unary));
+        allOps.put(Op.Add, new TokenOperator(Op.Add, "+", 550, OpAssoc.Left, OpType.Binary));
+        allOps.put(Op.Subtract, new TokenOperator(Op.Subtract, "-", 550, OpAssoc.Left, OpType.Binary));
+        allOps.put(Op.Multiply, new TokenOperator(Op.Multiply, "*", 600, OpAssoc.Left, OpType.Binary));
+        allOps.put(Op.Divide, new TokenOperator(Op.Divide, "/", 600, OpAssoc.Left, OpType.Binary));
+        allOps.put(Op.Modulus, new TokenOperator(Op.Modulus, "%", 600, OpAssoc.Left, OpType.Binary));
+        allOps.put(Op.Exponent, new TokenOperator(Op.Exponent, "^", 650, OpAssoc.Right, OpType.Binary));
+        allOps.put(Op.Plus, new TokenOperator(Op.Plus, "+", 1000, OpAssoc.Right, OpType.Unary));
+        allOps.put(Op.Minus, new TokenOperator(Op.Minus, "-", 1000, OpAssoc.Right, OpType.Unary));
+        allOps.put(Op.Sin, new TokenOperator(Op.Sin, "Sin", 800, OpAssoc.Right, OpType.Unary));
+        allOps.put(Op.Cos, new TokenOperator(Op.Cos, "Cos", 800, OpAssoc.Right, OpType.Unary));
+        allOps.put(Op.Tan, new TokenOperator(Op.Tan, "Tan", 800, OpAssoc.Right, OpType.Unary));
+        allOps.put(Op.Cosec, new TokenOperator(Op.Cosec, "Cosec", 800, OpAssoc.Right, OpType.Unary));
+        allOps.put(Op.Sec, new TokenOperator(Op.Sec, "Sec", 800, OpAssoc.Right, OpType.Unary));
+        allOps.put(Op.Cot, new TokenOperator(Op.Cot, "Cot", 800, OpAssoc.Right, OpType.Unary));
+        allOps.put(Op.Log, new TokenOperator(Op.Log, "Log", 800, OpAssoc.Right, OpType.Unary));
     }
 
     public static TokenOperator getOperator(TokenOperator.Op op) {
