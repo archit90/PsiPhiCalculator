@@ -1,8 +1,11 @@
 package com.friedapps.scientycalc;
 
 import android.util.Log;
+import android.view.View;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class KeyPressHandler {
     private static final String[] numkey = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."};
@@ -21,6 +24,17 @@ public class KeyPressHandler {
         if (instance == null)
             instance = new KeyPressHandler();
         return instance;
+    }
+
+    private static final Map<Integer, View.OnClickListener> keysEvent = new HashMap<Integer, View.OnClickListener>();
+
+    static {
+        keysEvent.put(R.id.btn0, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     private static int findInStringArray(String[] ary, String item) {

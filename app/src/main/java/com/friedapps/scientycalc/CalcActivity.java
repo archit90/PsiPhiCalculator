@@ -38,21 +38,6 @@ public class CalcActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onNumpadButtonClick(View view) {
-        String btnText = ((Button) view).getText().toString();
-        onButtonClick(view);
-    }
-
-    public void onBinaryOpsButtonClick(View view) {
-        String btnText = ((Button) view).getText().toString();
-        onButtonClick(view);
-    }
-
-    public void onCalcButtonClick(View view) {
-        String btnText = ((Button) view).getText().toString();
-        onButtonClick(view);
-    }
-
     public void onButtonClick(View view) {
 
         String btn = ((Button) view).getText().toString();

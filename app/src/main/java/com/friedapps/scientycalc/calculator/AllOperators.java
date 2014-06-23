@@ -23,13 +23,10 @@ public class AllOperators {
         allOps.put(Op.Sin, new TokenOperator(Op.Sin, "Sin", 800, OpAssoc.Right, OpType.Unary));
         allOps.put(Op.Cos, new TokenOperator(Op.Cos, "Cos", 800, OpAssoc.Right, OpType.Unary));
         allOps.put(Op.Tan, new TokenOperator(Op.Tan, "Tan", 800, OpAssoc.Right, OpType.Unary));
-        allOps.put(Op.Cosec, new TokenOperator(Op.Cosec, "Cosec", 800, OpAssoc.Right, OpType.Unary));
-        allOps.put(Op.Sec, new TokenOperator(Op.Sec, "Sec", 800, OpAssoc.Right, OpType.Unary));
-        allOps.put(Op.Cot, new TokenOperator(Op.Cot, "Cot", 800, OpAssoc.Right, OpType.Unary));
         allOps.put(Op.Log, new TokenOperator(Op.Log, "Log", 800, OpAssoc.Right, OpType.Unary));
     }
 
-    private static Map<Op, OpOperation> allOperations = new HashMap<Op, OpOperation>();
+    private static final Map<Op, OpOperation> allOperations = new HashMap<Op, OpOperation>();
 
     static {
         allOperations.put(Op.Add, new OpOperation() {
@@ -153,39 +150,6 @@ public class AllOperators {
             @Override
             public TokenConstant calcUnary(TokenConstant op) {
                 return new TokenConstant(Math.tan(op.val));
-            }
-        });
-        allOperations.put(Op.Cosec, new OpOperation() {
-            @Override
-            public TokenConstant calcBinary(TokenConstant opL, TokenConstant opR) {
-                return null;
-            }
-
-            @Override
-            public TokenConstant calcUnary(TokenConstant op) {
-                return new TokenConstant(1 / Math.sin(op.val));
-            }
-        });
-        allOperations.put(Op.Sec, new OpOperation() {
-            @Override
-            public TokenConstant calcBinary(TokenConstant opL, TokenConstant opR) {
-                return null;
-            }
-
-            @Override
-            public TokenConstant calcUnary(TokenConstant op) {
-                return new TokenConstant(1 / Math.cos(op.val));
-            }
-        });
-        allOperations.put(Op.Cot, new OpOperation() {
-            @Override
-            public TokenConstant calcBinary(TokenConstant opL, TokenConstant opR) {
-                return null;
-            }
-
-            @Override
-            public TokenConstant calcUnary(TokenConstant op) {
-                return new TokenConstant(1 / Math.tan(op.val));
             }
         });
 
