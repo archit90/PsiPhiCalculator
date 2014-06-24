@@ -28,15 +28,69 @@
         android:focusableInTouchMode="false"
         android:hint="Result" />
 
-
     <GridLayout
-        android:id="@+id/gridMain"
-        android:layout_width="320dp"
+        android:id="@+id/gridSc"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/txtResult"
         android:layout_centerHorizontal="true"
         android:padding="4dp">
 
+        <GridLayout
+            android:id="@+id/gridSc1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:columnCount="4"
+            android:rowCount="1">
+
+            <Button
+                android:id="@+id/btnSin"
+                style="@style/MyButtonStyleSmallAddonPad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_row="0"
+                android:onClick="onButtonClick"
+                android:text="Sin" />
+            <Button
+                android:id="@+id/btnCos"
+                style="@style/MyButtonStyleSmallAddonPad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_row="0"
+                android:onClick="onButtonClick"
+                android:text="Cos" />
+            <Button
+                android:id="@+id/btnTan"
+                style="@style/MyButtonStyleSmallAddonPad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_row="0"
+                android:onClick="onButtonClick"
+                android:text="Tan" />
+            <Button
+                android:id="@+id/btnLog"
+                style="@style/MyButtonStyleSmallAddonPad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="3"
+                android:layout_row="0"
+                android:onClick="onButtonClick"
+                android:text="Log" />
+        </GridLayout>
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/gridMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gridSc"
+        android:layout_centerHorizontal="true"
+        android:padding="4dp">
 
         <GridLayout
             android:id="@+id/gridNumpad"

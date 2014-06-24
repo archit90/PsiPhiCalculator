@@ -57,6 +57,12 @@ public class ButtonKeys {
         keyMap.put(R.id.btnMR, Keys.kMR);
         keyMap.put(R.id.btnMemMinus, Keys.kMemMinus);
         keyMap.put(R.id.btnMemPlus, Keys.kMemPlus);
+
+        keyMap.put(R.id.btnSin,Keys.kSin);
+        keyMap.put(R.id.btnCos,Keys.kCos);
+        keyMap.put(R.id.btnTan,Keys.kTan);
+        keyMap.put(R.id.btnLog,Keys.kLog);
+        // TODO: sin cos tan log
     }
 
     static {
@@ -81,7 +87,7 @@ public class ButtonKeys {
         keySymbol.put(Keys.kExp, "^");
 
         keySymbol.put(Keys.kBrOpenClose, "");
-        keySymbol.put(Keys.kAns, "");
+        keySymbol.put(Keys.kAns, "=");
 
         keySymbol.put(Keys.kMR, "");
         keySymbol.put(Keys.kMC, "");

@@ -19,8 +19,7 @@ public class AllOperators {
         allOps.put(Op.Divide, new TokenOperator(Op.Divide, Keys.kDiv, 600, OpAssoc.Left, OpType.Binary));
         allOps.put(Op.Modulus, new TokenOperator(Op.Modulus, Keys.kMod, 600, OpAssoc.Left, OpType.Binary));
         allOps.put(Op.Exponent, new TokenOperator(Op.Exponent, Keys.kExp, 650, OpAssoc.Right, OpType.Binary));
-        allOps.put(Op.Plus, new TokenOperator(Op.Plus, Keys.kPlus, 1000, OpAssoc.Right, OpType.Unary));
-        allOps.put(Op.Minus, new TokenOperator(Op.Minus, Keys.kMinus, 1000, OpAssoc.Right, OpType.Unary));
+        allOps.put(Op.PlusMinus, new TokenOperator(Op.PlusMinus, Keys.kPlusMinus, 1000, OpAssoc.Right, OpType.Unary));
         allOps.put(Op.Sin, new TokenOperator(Op.Sin, Keys.kSin, 800, OpAssoc.Right, OpType.Unary));
         allOps.put(Op.Cos, new TokenOperator(Op.Cos, Keys.kCos, 800, OpAssoc.Right, OpType.Unary));
         allOps.put(Op.Tan, new TokenOperator(Op.Tan, Keys.kTan, 800, OpAssoc.Right, OpType.Unary));

@@ -79,7 +79,8 @@ public class Tokenizer {
                 dnum = "";
             }
             TokenBracket tB;
-            if (crumb == Keys.kBrOpen) {
+            // TODO figure out the brackets scheme
+            if () {
                 tB = new TokenBracket(BracketType.Open);
                 lastBracketType = BracketType.Open;
             } else {

@@ -21,7 +21,7 @@ public class TokenBracket extends TokenObject {
     }
 
     public static boolean isBracket(Keys k) {
-        return (k == Keys.kBrClose || k == Keys.kBrOpen);
+        return (k == Keys.kBrOpenClose);
     }
 
 
