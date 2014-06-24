@@ -3,10 +3,10 @@ package com.friedapps.scientycalc.calculator;
 
 import android.util.Log;
 
+import com.friedapps.scientycalc.calculator.ButtonKeys.Key;
 import com.friedapps.scientycalc.calculator.ExpressionItem.TokenType;
 import com.friedapps.scientycalc.calculator.TokenBracket.BracketType;
 import com.friedapps.scientycalc.calculator.TokenOperator.OpType;
-import com.friedapps.scientycalc.calculator.ButtonKeys.Key;
 
 public class Tokenizer {
 
@@ -29,8 +29,7 @@ public class Tokenizer {
         int num = 0;
         if (crumb == Key.kAns && dnum.length() > 0) {
             TokenConstant tC = new TokenConstant(dnum);
-            ExpressionItem ei = new ExpressionItem(tC, TokenType.Constant);
-            infix.expr.add(ei);
+            addTokenToExpression(-1, tC, TokenType.Constant);
             // TODO: Evaluate answer
         } else if ((isDot = crumb == Key.kDot) ||
                 (isNum = ((num = TokenConstant.getDigit(crumb)) >= 0))) {
@@ -50,8 +49,7 @@ public class Tokenizer {
         } else if (AllOperators.isOperator(crumb)) {
             if (lastTokenType == TokenType.Constant) {
                 TokenConstant tC = new TokenConstant(dnum);
-                ExpressionItem ei = new ExpressionItem(tC, TokenType.Constant);
-                infix.expr.add(ei);
+                addTokenToExpression(-1, tC, TokenType.Constant);
                 dnum = "";
             }
             TokenOperator tOp = null;
@@ -68,27 +66,24 @@ public class Tokenizer {
                 Log.d("Calc", "Unknown Operator " + crumb);
                 return false;
             }
-            ExpressionItem ei = new ExpressionItem(tOp, TokenType.Operator);
-            infix.expr.add(ei);
+            addTokenToExpression(-1, tOp, TokenType.Operator);
             lastTokenType = TokenType.Operator;
         } else if (TokenBracket.isBracket(crumb)) {
             if (lastTokenType == TokenType.Constant) {
                 TokenConstant tC = new TokenConstant(dnum);
-                ExpressionItem ei = new ExpressionItem(tC, TokenType.Constant);
-                infix.expr.add(ei);
+                addTokenToExpression(-1, tC, TokenType.Constant);
                 dnum = "";
             }
             TokenBracket tB;
             // TODO figure out the brackets scheme
-            if (crumb== Key.kBrOpenClose) {
+            if (crumb == Key.kBrOpenClose) {
                 tB = new TokenBracket(BracketType.Open);
                 lastBracketType = BracketType.Open;
             } else {
                 tB = new TokenBracket(BracketType.Close);
                 lastBracketType = BracketType.Close;
             }
-            ExpressionItem ei = new ExpressionItem(tB, TokenType.Bracket);
-            infix.expr.add(ei);
+            addTokenToExpression(-1, tB, TokenType.Bracket);
             lastTokenType = TokenType.Bracket;
         } else {
             // TODO: Handle variables
@@ -99,4 +94,11 @@ public class Tokenizer {
         return true;
     }
 
+    private void addTokenToExpression(int index, TokenObject tObj, TokenType type) {
+        if (index < 0 || index >= infix.expr.size()) {
+            infix.expr.add(new ExpressionItem(tObj, type));
+        } else {
+            infix.expr.add(index, new ExpressionItem(tObj, type));
+        }
+    }
 }
