@@ -1,6 +1,5 @@
 package com.friedapps.scientycalc.calculator;
 
-import com.friedapps.scientycalc.calculator.ButtonKeys.Keys;
 import com.friedapps.scientycalc.calculator.TokenOperator.Op;
 import com.friedapps.scientycalc.calculator.TokenOperator.OpAssoc;
 import com.friedapps.scientycalc.calculator.TokenOperator.OpType;
@@ -13,17 +12,17 @@ public class AllOperators {
 
     static {
 
-        allOps.put(Op.Add, new TokenOperator(Op.Add, Keys.kAdd, 550, OpAssoc.Left, OpType.Binary));
-        allOps.put(Op.Subtract, new TokenOperator(Op.Subtract, Keys.kSubt, 550, OpAssoc.Left, OpType.Binary));
-        allOps.put(Op.Multiply, new TokenOperator(Op.Multiply, Keys.kMul, 600, OpAssoc.Left, OpType.Binary));
-        allOps.put(Op.Divide, new TokenOperator(Op.Divide, Keys.kDiv, 600, OpAssoc.Left, OpType.Binary));
-        allOps.put(Op.Modulus, new TokenOperator(Op.Modulus, Keys.kMod, 600, OpAssoc.Left, OpType.Binary));
-        allOps.put(Op.Exponent, new TokenOperator(Op.Exponent, Keys.kExp, 650, OpAssoc.Right, OpType.Binary));
-        allOps.put(Op.Minus, new TokenOperator(Op.Minus, Keys.kPlusMinus, 1000, OpAssoc.Right, OpType.Unary));
-        allOps.put(Op.Sin, new TokenOperator(Op.Sin, Keys.kSin, 800, OpAssoc.Right, OpType.Unary));
-        allOps.put(Op.Cos, new TokenOperator(Op.Cos, Keys.kCos, 800, OpAssoc.Right, OpType.Unary));
-        allOps.put(Op.Tan, new TokenOperator(Op.Tan, Keys.kTan, 800, OpAssoc.Right, OpType.Unary));
-        allOps.put(Op.Log, new TokenOperator(Op.Log, Keys.kLog, 800, OpAssoc.Right, OpType.Unary));
+        allOps.put(Op.Add, new TokenOperator(Op.Add, ButtonKeys.Key.kAdd, 550, OpAssoc.Left, OpType.Binary));
+        allOps.put(Op.Subtract, new TokenOperator(Op.Subtract, ButtonKeys.Key.kSubt, 550, OpAssoc.Left, OpType.Binary));
+        allOps.put(Op.Multiply, new TokenOperator(Op.Multiply, ButtonKeys.Key.kMul, 600, OpAssoc.Left, OpType.Binary));
+        allOps.put(Op.Divide, new TokenOperator(Op.Divide, ButtonKeys.Key.kDiv, 600, OpAssoc.Left, OpType.Binary));
+        allOps.put(Op.Modulus, new TokenOperator(Op.Modulus, ButtonKeys.Key.kMod, 600, OpAssoc.Left, OpType.Binary));
+        allOps.put(Op.Exponent, new TokenOperator(Op.Exponent, ButtonKeys.Key.kExp, 650, OpAssoc.Right, OpType.Binary));
+        allOps.put(Op.Minus, new TokenOperator(Op.Minus, ButtonKeys.Key.kPlusMinus, 1000, OpAssoc.Right, OpType.Unary));
+        allOps.put(Op.Sin, new TokenOperator(Op.Sin, ButtonKeys.Key.kSin, 800, OpAssoc.Right, OpType.Unary));
+        allOps.put(Op.Cos, new TokenOperator(Op.Cos, ButtonKeys.Key.kCos, 800, OpAssoc.Right, OpType.Unary));
+        allOps.put(Op.Tan, new TokenOperator(Op.Tan, ButtonKeys.Key.kTan, 800, OpAssoc.Right, OpType.Unary));
+        allOps.put(Op.Log, new TokenOperator(Op.Log, ButtonKeys.Key.kLog, 800, OpAssoc.Right, OpType.Unary));
     }
 
     private static final Map<Op, OpOperation> allOperations = new HashMap<Op, OpOperation>();
@@ -161,7 +160,7 @@ public class AllOperators {
         return allOps.get(op);
     }
 
-    public static TokenOperator getOperator(Keys op, OpType opType) {
+    public static TokenOperator getOperator(ButtonKeys.Key op, OpType opType) {
         for (Map.Entry<Op, TokenOperator> item : allOps.entrySet()) {
             TokenOperator to = item.getValue();
             if (to.getType() == opType && to.getKey() == op) {
@@ -171,7 +170,7 @@ public class AllOperators {
         return null;
     }
 
-    public static boolean isOperator(Keys k) {
+    public static boolean isOperator(ButtonKeys.Key k) {
         for (Map.Entry<Op, TokenOperator> item : allOps.entrySet()) {
             TokenOperator tOp = item.getValue();
             if (tOp.getKey() == k)

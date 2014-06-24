@@ -1,16 +1,14 @@
 package com.friedapps.scientycalc.calculator;
 
-import com.friedapps.scientycalc.calculator.ButtonKeys.Keys;
-
 public class TokenOperator extends TokenObject {
     private Op val;
-    private Keys key;
+    private ButtonKeys.Key key;
     // lower numeric value of precedence => lower precedence
     private int precedence;
     private OpAssoc assoc;
     private OpType type;
 
-    public Keys getKey() {
+    public ButtonKeys.Key getKey() {
         return key;
     }
 
@@ -18,7 +16,7 @@ public class TokenOperator extends TokenObject {
         return val;
     }
 
-    public TokenOperator(Op val, Keys key, int precedence, OpAssoc assoc, OpType type) {
+    public TokenOperator(Op val, ButtonKeys.Key key, int precedence, OpAssoc assoc, OpType type) {
         this.val = val;
         this.key = key;
         this.precedence = precedence;

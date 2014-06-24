@@ -6,12 +6,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.friedapps.scientycalc.calculator.ButtonKeys;
-import com.friedapps.scientycalc.calculator.ButtonKeys.Keys;
 import com.friedapps.scientycalc.calculator.Tokenizer;
 
 public class CalcActivity extends Activity {
@@ -57,7 +55,7 @@ public class CalcActivity extends Activity {
     public void onButtonClick(View view) {
 
         int btnId = view.getId();
-        Keys key = ButtonKeys.getKey(btnId);
+        ButtonKeys.Key key = ButtonKeys.getKey(btnId);
         boolean keyIsSuccess = tokens.addToken(key);
         Context c=getApplicationContext();
         if (keyIsSuccess) {

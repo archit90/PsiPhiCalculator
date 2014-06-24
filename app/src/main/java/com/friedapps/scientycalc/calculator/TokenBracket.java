@@ -1,7 +1,5 @@
 package com.friedapps.scientycalc.calculator;
 
-import com.friedapps.scientycalc.calculator.ButtonKeys.Keys;
-
 public class TokenBracket extends TokenObject {
     public enum BracketType {Open, Close}
 
@@ -20,8 +18,8 @@ public class TokenBracket extends TokenObject {
         return false;
     }
 
-    public static boolean isBracket(Keys k) {
-        return (k == Keys.kBrOpenClose);
+    public static boolean isBracket(ButtonKeys.Key k) {
+        return (k == ButtonKeys.Key.kBrOpenClose);
     }
 
 

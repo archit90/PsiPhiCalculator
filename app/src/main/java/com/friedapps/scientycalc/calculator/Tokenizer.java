@@ -3,10 +3,10 @@ package com.friedapps.scientycalc.calculator;
 
 import android.util.Log;
 
-import com.friedapps.scientycalc.calculator.ButtonKeys.Keys;
 import com.friedapps.scientycalc.calculator.ExpressionItem.TokenType;
 import com.friedapps.scientycalc.calculator.TokenBracket.BracketType;
 import com.friedapps.scientycalc.calculator.TokenOperator.OpType;
+import com.friedapps.scientycalc.calculator.ButtonKeys.Key;
 
 public class Tokenizer {
 
@@ -23,16 +23,16 @@ public class Tokenizer {
         dnum = "";
     }
 
-    public boolean addToken(Keys crumb) {
+    public boolean addToken(Key crumb) {
         // TODO: implement ctr
         boolean isDot = false, isNum = false;
         int num = 0;
-        if (crumb == Keys.kAns && dnum.length() > 0) {
+        if (crumb == Key.kAns && dnum.length() > 0) {
             TokenConstant tC = new TokenConstant(dnum);
             ExpressionItem ei = new ExpressionItem(tC, TokenType.Constant);
             infix.expr.add(ei);
             // TODO: Evaluate answer
-        } else if ((isDot = crumb == Keys.kDot) ||
+        } else if ((isDot = crumb == Key.kDot) ||
                 (isNum = ((num = TokenConstant.getDigit(crumb)) >= 0))) {
             if (lastTokenType == TokenType.Constant) {
                 if ((isDot && dnum.indexOf('.') < 0) || isNum) {
@@ -80,7 +80,7 @@ public class Tokenizer {
             }
             TokenBracket tB;
             // TODO figure out the brackets scheme
-            if (crumb==Keys.kBrOpenClose) {
+            if (crumb== Key.kBrOpenClose) {
                 tB = new TokenBracket(BracketType.Open);
                 lastBracketType = BracketType.Open;
             } else {

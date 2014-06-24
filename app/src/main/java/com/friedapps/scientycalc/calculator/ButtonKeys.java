@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ButtonKeys {
-    public enum Keys {
+    public enum Key {
         k0, k1, k2, k3, k4, k5, k6, k7, k8, k9, kDot,
         kAdd, kSubt, kMul, kDiv, kExp, kMod,
         kPlusMinus, kSin, kCos, kTan, kLog,
@@ -14,10 +14,10 @@ public class ButtonKeys {
         kBrOpenClose, kAns
     }
 
-    private static Map<Integer, Keys> keyMap = new HashMap<Integer, Keys>();
-    private static Map<Keys, String> keySymbol = new HashMap<Keys, String>();
+    private static Map<Integer, Key> keyMap = new HashMap<Integer, Key>();
+    private static Map<Key, String> keySymbol = new HashMap<Key, String>();
 
-    public static Keys getKey(int id) {
+    public static Key getKey(int id) {
         return keyMap.get(id);
     }
 
@@ -25,74 +25,74 @@ public class ButtonKeys {
         return keySymbol.get(getKey(id));
     }
 
-    public static String getKeySymbol(Keys k) {
+    public static String getKeySymbol(Key k) {
         return keySymbol.get(k);
     }
 
     static {
-        keyMap.put(R.id.btn0, Keys.k0);
-        keyMap.put(R.id.btn1, Keys.k1);
-        keyMap.put(R.id.btn2, Keys.k2);
-        keyMap.put(R.id.btn3, Keys.k3);
-        keyMap.put(R.id.btn4, Keys.k4);
-        keyMap.put(R.id.btn5, Keys.k5);
-        keyMap.put(R.id.btn6, Keys.k6);
-        keyMap.put(R.id.btn7, Keys.k7);
-        keyMap.put(R.id.btn8, Keys.k8);
-        keyMap.put(R.id.btn9, Keys.k9);
-        keyMap.put(R.id.btnDot, Keys.kDot);
-        keyMap.put(R.id.btnPlusMinus, Keys.kPlusMinus);
+        keyMap.put(R.id.btn0, Key.k0);
+        keyMap.put(R.id.btn1, Key.k1);
+        keyMap.put(R.id.btn2, Key.k2);
+        keyMap.put(R.id.btn3, Key.k3);
+        keyMap.put(R.id.btn4, Key.k4);
+        keyMap.put(R.id.btn5, Key.k5);
+        keyMap.put(R.id.btn6, Key.k6);
+        keyMap.put(R.id.btn7, Key.k7);
+        keyMap.put(R.id.btn8, Key.k8);
+        keyMap.put(R.id.btn9, Key.k9);
+        keyMap.put(R.id.btnDot, Key.kDot);
+        keyMap.put(R.id.btnPlusMinus, Key.kPlusMinus);
 
-        keyMap.put(R.id.btnAdd, Keys.kAdd);
-        keyMap.put(R.id.btnSubtract, Keys.kSubt);
-        keyMap.put(R.id.btnMultiply, Keys.kMul);
-        keyMap.put(R.id.btnDivide, Keys.kDiv);
-        keyMap.put(R.id.btnModulus, Keys.kMod);
-        keyMap.put(R.id.btnExponent, Keys.kExp);
+        keyMap.put(R.id.btnAdd, Key.kAdd);
+        keyMap.put(R.id.btnSubtract, Key.kSubt);
+        keyMap.put(R.id.btnMultiply, Key.kMul);
+        keyMap.put(R.id.btnDivide, Key.kDiv);
+        keyMap.put(R.id.btnModulus, Key.kMod);
+        keyMap.put(R.id.btnExponent, Key.kExp);
 
-        keyMap.put(R.id.btnBrackets, Keys.kBrOpenClose);
-        keyMap.put(R.id.btnAnswer, Keys.kAns);
+        keyMap.put(R.id.btnBrackets, Key.kBrOpenClose);
+        keyMap.put(R.id.btnAnswer, Key.kAns);
 
-        keyMap.put(R.id.btnMC, Keys.kMC);
-        keyMap.put(R.id.btnMR, Keys.kMR);
-        keyMap.put(R.id.btnMemMinus, Keys.kMemMinus);
-        keyMap.put(R.id.btnMemPlus, Keys.kMemPlus);
+        keyMap.put(R.id.btnMC, Key.kMC);
+        keyMap.put(R.id.btnMR, Key.kMR);
+        keyMap.put(R.id.btnMemMinus, Key.kMemMinus);
+        keyMap.put(R.id.btnMemPlus, Key.kMemPlus);
 
-        keyMap.put(R.id.btnSin,Keys.kSin);
-        keyMap.put(R.id.btnCos,Keys.kCos);
-        keyMap.put(R.id.btnTan,Keys.kTan);
-        keyMap.put(R.id.btnLog,Keys.kLog);
+        keyMap.put(R.id.btnSin, Key.kSin);
+        keyMap.put(R.id.btnCos, Key.kCos);
+        keyMap.put(R.id.btnTan, Key.kTan);
+        keyMap.put(R.id.btnLog, Key.kLog);
         // TODO: sin cos tan log
     }
 
     static {
-        keySymbol.put(Keys.k0, "0");
-        keySymbol.put(Keys.k1, "1");
-        keySymbol.put(Keys.k2, "2");
-        keySymbol.put(Keys.k3, "3");
-        keySymbol.put(Keys.k4, "4");
-        keySymbol.put(Keys.k5, "5");
-        keySymbol.put(Keys.k6, "6");
-        keySymbol.put(Keys.k7, "7");
-        keySymbol.put(Keys.k8, "8");
-        keySymbol.put(Keys.k9, "9");
-        keySymbol.put(Keys.kDot, ".");
-        keySymbol.put(Keys.kPlusMinus, "-");
+        keySymbol.put(Key.k0, "0");
+        keySymbol.put(Key.k1, "1");
+        keySymbol.put(Key.k2, "2");
+        keySymbol.put(Key.k3, "3");
+        keySymbol.put(Key.k4, "4");
+        keySymbol.put(Key.k5, "5");
+        keySymbol.put(Key.k6, "6");
+        keySymbol.put(Key.k7, "7");
+        keySymbol.put(Key.k8, "8");
+        keySymbol.put(Key.k9, "9");
+        keySymbol.put(Key.kDot, ".");
+        keySymbol.put(Key.kPlusMinus, "-");
 
-        keySymbol.put(Keys.kAdd, "+");
-        keySymbol.put(Keys.kSubt, "-");
-        keySymbol.put(Keys.kMul, "*");
-        keySymbol.put(Keys.kDiv, "/");
-        keySymbol.put(Keys.kMod, "%");
-        keySymbol.put(Keys.kExp, "^");
+        keySymbol.put(Key.kAdd, "+");
+        keySymbol.put(Key.kSubt, "-");
+        keySymbol.put(Key.kMul, "*");
+        keySymbol.put(Key.kDiv, "/");
+        keySymbol.put(Key.kMod, "%");
+        keySymbol.put(Key.kExp, "^");
 
-        keySymbol.put(Keys.kBrOpenClose, "");
-        keySymbol.put(Keys.kAns, "=");
+        keySymbol.put(Key.kBrOpenClose, "");
+        keySymbol.put(Key.kAns, "=");
 
-        keySymbol.put(Keys.kMR, "");
-        keySymbol.put(Keys.kMC, "");
-        keySymbol.put(Keys.kMemPlus, "");
-        keySymbol.put(Keys.kMemMinus, "");
+        keySymbol.put(Key.kMR, "");
+        keySymbol.put(Key.kMC, "");
+        keySymbol.put(Key.kMemPlus, "");
+        keySymbol.put(Key.kMemMinus, "");
 
     }
 }
