@@ -9,10 +9,9 @@ public class ButtonKeys {
     public enum Keys {
         k0, k1, k2, k3, k4, k5, k6, k7, k8, k9, kDot,
         kAdd, kSubt, kMul, kDiv, kExp, kMod,
-        kPlus, kMinus, kSin, kCos, kTan, kLog,
+        kPlusMinus, kSin, kCos, kTan, kLog,
         kMC, kMR, kMemPlus, kMemMinus,
-        kBrOpen, kBrClose,
-        kAns
+        kBrOpenClose, kAns
     }
 
     private static Map<Integer, Keys> keyMap = new HashMap<Integer, Keys>();
@@ -42,13 +41,22 @@ public class ButtonKeys {
         keyMap.put(R.id.btn8, Keys.k8);
         keyMap.put(R.id.btn9, Keys.k9);
         keyMap.put(R.id.btnDot, Keys.kDot);
-        keyMap.put(R.id.btnPlus, Keys.kAdd);
-        keyMap.put(R.id.btnMinus, Keys.kSubt);
+        keyMap.put(R.id.btnPlusMinus, Keys.kPlusMinus);
+
+        keyMap.put(R.id.btnAdd, Keys.kAdd);
+        keyMap.put(R.id.btnSubtract, Keys.kSubt);
         keyMap.put(R.id.btnMultiply, Keys.kMul);
         keyMap.put(R.id.btnDivide, Keys.kDiv);
-        keyMap.put(R.id.btnMC, Keys.kMC);
-        keyMap.put(R.id.btnMPlus, Keys.kMemPlus);
+        keyMap.put(R.id.btnModulus, Keys.kMod);
+        keyMap.put(R.id.btnExponent, Keys.kExp);
+
+        keyMap.put(R.id.btnBrackets, Keys.kBrOpenClose);
         keyMap.put(R.id.btnAnswer, Keys.kAns);
+
+        keyMap.put(R.id.btnMC, Keys.kMC);
+        keyMap.put(R.id.btnMR, Keys.kMR);
+        keyMap.put(R.id.btnMemMinus, Keys.kMemMinus);
+        keyMap.put(R.id.btnMemPlus, Keys.kMemPlus);
     }
 
     static {
@@ -63,14 +71,22 @@ public class ButtonKeys {
         keySymbol.put(Keys.k8, "8");
         keySymbol.put(Keys.k9, "9");
         keySymbol.put(Keys.kDot, ".");
+        keySymbol.put(Keys.kPlusMinus, "-");
+
         keySymbol.put(Keys.kAdd, "+");
         keySymbol.put(Keys.kSubt, "-");
         keySymbol.put(Keys.kMul, "*");
         keySymbol.put(Keys.kDiv, "/");
+        keySymbol.put(Keys.kMod, "%");
+        keySymbol.put(Keys.kExp, "^");
+
+        keySymbol.put(Keys.kBrOpenClose, "");
+        keySymbol.put(Keys.kAns, "");
+
+        keySymbol.put(Keys.kMR, "");
         keySymbol.put(Keys.kMC, "");
         keySymbol.put(Keys.kMemPlus, "");
-        keySymbol.put(Keys.kAns, "");
-        keySymbol.put(Keys.kBrClose, ")");
-        keySymbol.put(Keys.kBrOpen, "(");
+        keySymbol.put(Keys.kMemMinus, "");
+
     }
 }

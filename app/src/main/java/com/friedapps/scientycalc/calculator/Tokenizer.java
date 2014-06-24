@@ -26,15 +26,17 @@ public class Tokenizer {
     public boolean addToken(Keys crumb) {
         // TODO: implement ctr
         boolean isDot = false, isNum = false;
+        int num = 0;
         if (crumb == Keys.kAns && dnum.length() > 0) {
             TokenConstant tC = new TokenConstant(dnum);
             ExpressionItem ei = new ExpressionItem(tC, TokenType.Constant);
             infix.expr.add(ei);
             // TODO: Evaluate answer
-        } else if ((isDot = crumb == Keys.kDot) || (isNum = (TokenConstant.getDigit(crumb) >= 0))) {
+        } else if ((isDot = crumb == Keys.kDot) ||
+                (isNum = ((num = TokenConstant.getDigit(crumb)) >= 0))) {
             if (lastTokenType == TokenType.Constant) {
                 if ((isDot && dnum.indexOf('.') < 0) || isNum) {
-                    dnum += crumb;
+                    dnum += num;
                 } else {
                     // decimal point already exists
                     // TODO: throw error NumberFormatException
@@ -94,12 +96,6 @@ public class Tokenizer {
         }
         // TODO: revise this
         return true;
-    }
-
-    {
-        TokenConstant tC = new TokenConstant(dnum);
-        ExpressionItem ei = new ExpressionItem(tC, TokenType.Constant);
-        infix.expr.add(ei);
     }
 
 }

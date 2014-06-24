@@ -1,12 +1,14 @@
 package com.friedapps.scientycalc;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.friedapps.scientycalc.calculator.ButtonKeys;
 import com.friedapps.scientycalc.calculator.ButtonKeys.Keys;
@@ -54,14 +56,16 @@ public class CalcActivity extends Activity {
 
     public void onButtonClick(View view) {
 
-        int btnId = ((Button) view).getId();
+        int btnId = view.getId();
         Keys key = ButtonKeys.getKey(btnId);
         boolean keyIsSuccess = tokens.addToken(key);
+        Context c=getApplicationContext();
         if (keyIsSuccess) {
             // TODO: update display
-
+            Toast.makeText(this,"Success "+key.toString(),Toast.LENGTH_SHORT).show();
         } else {
             // TODO: display error toast
+            Toast.makeText(this,"Fail "+key.toString(),Toast.LENGTH_SHORT).show();
         }
     }
 }
