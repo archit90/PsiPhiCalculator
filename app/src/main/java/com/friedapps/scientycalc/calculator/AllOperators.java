@@ -139,6 +139,17 @@ public class AllOperators {
                 return new TokenConstant(Math.tan(op.val));
             }
         });
+        allOperations.put(Op.Log, new OpOperation() {
+            @Override
+            public TokenConstant calcBinary(TokenConstant opL, TokenConstant opR) {
+                return null;
+            }
+
+            @Override
+            public TokenConstant calcUnary(TokenConstant op) {
+                return new TokenConstant(Math.log(op.val));
+            }
+        });
 
     }
 
