@@ -27,7 +27,7 @@ public class TokenOperator extends TokenObject {
     }
 
     public enum Op {
-        PlusMinus,
+        Minus,
         Add, Subtract, Multiply, Divide, Exponent, Modulus,
         Sin, Cos, Tan, Log
     }

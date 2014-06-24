@@ -80,7 +80,7 @@ public class Tokenizer {
             }
             TokenBracket tB;
             // TODO figure out the brackets scheme
-            if () {
+            if (crumb==Keys.kBrOpenClose) {
                 tB = new TokenBracket(BracketType.Open);
                 lastBracketType = BracketType.Open;
             } else {

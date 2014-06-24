@@ -19,7 +19,7 @@ public class AllOperators {
         allOps.put(Op.Divide, new TokenOperator(Op.Divide, Keys.kDiv, 600, OpAssoc.Left, OpType.Binary));
         allOps.put(Op.Modulus, new TokenOperator(Op.Modulus, Keys.kMod, 600, OpAssoc.Left, OpType.Binary));
         allOps.put(Op.Exponent, new TokenOperator(Op.Exponent, Keys.kExp, 650, OpAssoc.Right, OpType.Binary));
-        allOps.put(Op.PlusMinus, new TokenOperator(Op.PlusMinus, Keys.kPlusMinus, 1000, OpAssoc.Right, OpType.Unary));
+        allOps.put(Op.Minus, new TokenOperator(Op.Minus, Keys.kPlusMinus, 1000, OpAssoc.Right, OpType.Unary));
         allOps.put(Op.Sin, new TokenOperator(Op.Sin, Keys.kSin, 800, OpAssoc.Right, OpType.Unary));
         allOps.put(Op.Cos, new TokenOperator(Op.Cos, Keys.kCos, 800, OpAssoc.Right, OpType.Unary));
         allOps.put(Op.Tan, new TokenOperator(Op.Tan, Keys.kTan, 800, OpAssoc.Right, OpType.Unary));
@@ -40,7 +40,6 @@ public class AllOperators {
                 return null;
             }
         });
-
         allOperations.put(Op.Subtract, new OpOperation() {
             @Override
             public TokenConstant calcBinary(TokenConstant opL, TokenConstant opR) {
@@ -52,7 +51,6 @@ public class AllOperators {
                 return null;
             }
         });
-
         allOperations.put(Op.Multiply, new OpOperation() {
             @Override
             public TokenConstant calcBinary(TokenConstant opL, TokenConstant opR) {
@@ -95,17 +93,6 @@ public class AllOperators {
             @Override
             public TokenConstant calcUnary(TokenConstant op) {
                 return null;
-            }
-        });
-        allOperations.put(Op.Plus, new OpOperation() {
-            @Override
-            public TokenConstant calcBinary(TokenConstant opL, TokenConstant opR) {
-                return null;
-            }
-
-            @Override
-            public TokenConstant calcUnary(TokenConstant op) {
-                return new TokenConstant(op.val);
             }
         });
         allOperations.put(Op.Minus, new OpOperation() {
