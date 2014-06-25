@@ -162,10 +162,10 @@ public class Tokenizer {
     }
 
     private void insertTokenInExpression(int index, TokenObject tObj, TokenType type) {
-        if (index < 0 || index >= infix.expr.size()) {
-            infix.expr.add(new ExpressionItem(tObj, type));
+        if (index < 0 || index >= infix.list.size()) {
+            infix.list.add(new ExpressionItem(tObj, type));
         } else {
-            infix.expr.add(index, new ExpressionItem(tObj, type));
+            infix.list.add(index, new ExpressionItem(tObj, type));
         }
     }
 }

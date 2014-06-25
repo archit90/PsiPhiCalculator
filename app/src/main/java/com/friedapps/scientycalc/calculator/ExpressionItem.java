@@ -17,4 +17,19 @@ public class ExpressionItem {
         this.token = null;
     }
 
+    @Override
+    public String toString() {
+        switch (type) {
+            case Bracket:
+                return ((TokenBracket) token).type.toString();
+            case Constant:
+                return ((TokenConstant) token).val + "";
+            case Variable:
+                return ((TokenVariable) token).name;
+            case Operator:
+                return ((TokenOperator) token).getVal().toString();
+            default:
+                return null;
+        }
+    }
 }

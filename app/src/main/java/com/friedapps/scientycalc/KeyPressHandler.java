@@ -327,7 +327,9 @@ public class KeyPressHandler {
                 for (Key ky : keys) {
                     tokens.addToken(ky);
                 }
+                Log.d("Calc",tokens.infix.toString());
                 Expression postfix = ExpressionEvaluator.infixToPostfix(tokens.infix);
+                Log.d("Calc",postfix.toString());
                 ExpressionItem ans = ExpressionEvaluator.evaluateExpression(postfix);
                 Log.d("Calc", ans.toString());
                 break;
@@ -365,6 +367,7 @@ public class KeyPressHandler {
     private void moveCursor(int pos) {
         posCursor = pos;
     }
+
     /*
 
     public void handleKeypress(String keyText) {

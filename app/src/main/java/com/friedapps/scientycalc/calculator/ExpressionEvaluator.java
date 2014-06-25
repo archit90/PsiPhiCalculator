@@ -7,10 +7,10 @@ public class ExpressionEvaluator {
     public static Expression infixToPostfix(Expression infix) {
         Expression rpn = new Expression();
         Stack<ExpressionItem> opStack = new Stack<ExpressionItem>();
-        for (ExpressionItem item : infix.expr) {
+        for (ExpressionItem item : infix.list) {
             switch (item.type) {
                 case Constant:
-                    rpn.expr.add(item);
+                    rpn.list.add(item);
                     break;
                 case Operator:
                     TokenOperator tOp = (TokenOperator) item.token;
@@ -23,7 +23,7 @@ public class ExpressionEvaluator {
                             tStk = (TokenOperator) eiStk.token;
                             if ((tOp.getAssoc() == TokenOperator.OpAssoc.Left && TokenOperator.comparePrecedence(tOp, tStk) <= 0) ||
                                     (tOp.getAssoc() == TokenOperator.OpAssoc.Right && TokenOperator.comparePrecedence(tOp, tStk) < 0)) {
-                                rpn.expr.add(opStack.pop());
+                                rpn.list.add(opStack.pop());
                             } else break;
                         }
                     }
@@ -40,7 +40,7 @@ public class ExpressionEvaluator {
                                 opStack.pop();
                                 break;
                             } else {
-                                rpn.expr.add(opStack.pop());
+                                rpn.list.add(opStack.pop());
                             }
                         }
                     }
@@ -51,7 +51,7 @@ public class ExpressionEvaluator {
         while (!opStack.empty()) {
             ExpressionItem item = opStack.pop();
             if (item.type != ExpressionItem.TokenType.Bracket) {
-                rpn.expr.add(item);
+                rpn.list.add(item);
             } else {
                 // TODO: throw error, mismatch parens
             }
@@ -66,7 +66,7 @@ public class ExpressionEvaluator {
         TokenConstant tC;
         TokenVariable tV;
         TokenOperator tOp;
-        for (ExpressionItem item : rpn.expr) {
+        for (ExpressionItem item : rpn.list) {
 
             switch (item.type) {
                 case Bracket:
