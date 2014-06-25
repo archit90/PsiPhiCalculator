@@ -1,6 +1,4 @@
-package com.friedapps.scientycalc.calculator;
-
-import com.friedapps.scientycalc.R;
+package com.friedapps.scientycalc;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,14 +31,14 @@ public class ButtonKeys {
 
     public enum KeyKind {
         Numeric, Variable, InfixOperator, PrefixOperator, PostfixOperator,
-        OpenBracket, CloseBracket, Operation
+        OpenBracket, CloseBracket, Operation, MoveOperation
     }
 
     public enum Key {
         k0, k1, k2, k3, k4, k5, k6, k7, k8, k9, kDot,
         kAdd, kSubt, kMul, kDiv, kExp, kMod,
         kPlusMinus, kSin, kCos, kTan, kLog,
-        kBrOpenClose, kAns, kDel,
+        kBrOpen, kBrClose, kAns, kDel,
         kMoveLeft, kMoveRight, kMoveRightEnd, kMoveLeftEnd
     }
 
@@ -96,7 +94,7 @@ public class ButtonKeys {
         keyMap.put(R.id.btnModulus, Key.kMod);
         keyMap.put(R.id.btnExponent, Key.kExp);
 
-        keyMap.put(R.id.btnBrackets, Key.kBrOpenClose);
+        keyMap.put(R.id.btnBrackets, Key.kBrOpen);
         keyMap.put(R.id.btnAnswer, Key.kAns);
         keyMap.put(R.id.btnDel, Key.kDel);
 
@@ -132,14 +130,15 @@ public class ButtonKeys {
         keyDetailMap.put(Key.kMod, new KeyDetail(1, "%", KeyKind.InfixOperator));
         keyDetailMap.put(Key.kExp, new KeyDetail(1, "^", KeyKind.InfixOperator));
 
-        keyDetailMap.put(Key.kBrOpenClose, new KeyDetail(1, "", KeyKind.OpenBracket));
+        keyDetailMap.put(Key.kBrOpen, new KeyDetail(1, "(", KeyKind.OpenBracket));
+        keyDetailMap.put(Key.kBrClose, new KeyDetail(1, ")", KeyKind.CloseBracket));
         keyDetailMap.put(Key.kAns, new KeyDetail(0, "=", KeyKind.Operation));
         keyDetailMap.put(Key.kDel, new KeyDetail(0, "", KeyKind.Operation));
 
-        keyDetailMap.put(Key.kMoveLeft, new KeyDetail(0, "", KeyKind.Operation));
-        keyDetailMap.put(Key.kMoveRight, new KeyDetail(0, "", KeyKind.Operation));
-        keyDetailMap.put(Key.kMoveLeftEnd, new KeyDetail(0, "", KeyKind.Operation));
-        keyDetailMap.put(Key.kMoveRightEnd, new KeyDetail(0, "", KeyKind.Operation));
+        keyDetailMap.put(Key.kMoveLeft, new KeyDetail(0, "", KeyKind.MoveOperation));
+        keyDetailMap.put(Key.kMoveRight, new KeyDetail(0, "", KeyKind.MoveOperation));
+        keyDetailMap.put(Key.kMoveLeftEnd, new KeyDetail(0, "", KeyKind.MoveOperation));
+        keyDetailMap.put(Key.kMoveRightEnd, new KeyDetail(0, "", KeyKind.MoveOperation));
 
         keyDetailMap.put(Key.kSin, new KeyDetail(3, "Sin", KeyKind.PrefixOperator));
         keyDetailMap.put(Key.kCos, new KeyDetail(3, "Cos", KeyKind.PrefixOperator));

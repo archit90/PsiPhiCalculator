@@ -9,13 +9,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.friedapps.scientycalc.calculator.ButtonKeys;
 import com.friedapps.scientycalc.calculator.Tokenizer;
 
 public class CalcActivity extends Activity {
 
     private int total = 0;
-    Tokenizer tokens;
+    KeyPressHandler keyPressHandler;
     TextView exprTV, resultTV;
     String resultStr, exprStr;
 
@@ -23,7 +22,7 @@ public class CalcActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_calc);
-        tokens = new Tokenizer();
+        keyPressHandler = new KeyPressHandler();
         resultStr = "";
         exprStr = "";
         exprTV = (TextView) findViewById(R.id.txtCalcExpr);
@@ -56,14 +55,9 @@ public class CalcActivity extends Activity {
 
         int btnId = view.getId();
         ButtonKeys.Key key = ButtonKeys.getKey(btnId);
-        boolean keyIsSuccess = tokens.addToken(key);
-        Context c=getApplicationContext();
-        if (keyIsSuccess) {
-            // TODO: update display
-            Toast.makeText(this,"Success "+key.toString(),Toast.LENGTH_SHORT).show();
-        } else {
-            // TODO: display error toast
-            Toast.makeText(this,"Fail "+key.toString(),Toast.LENGTH_SHORT).show();
-        }
+        keyPressHandler.addKey(key);
+//        Toast.makeText(this, "Success " + key.toString(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Fail " + key.toString(), Toast.LENGTH_SHORT).show();
+
     }
 }

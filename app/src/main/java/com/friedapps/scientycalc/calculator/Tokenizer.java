@@ -3,8 +3,9 @@ package com.friedapps.scientycalc.calculator;
 
 import android.util.Log;
 
-import com.friedapps.scientycalc.calculator.ButtonKeys.Key;
-import com.friedapps.scientycalc.calculator.ButtonKeys.KeyKind;
+import com.friedapps.scientycalc.ButtonKeys;
+import com.friedapps.scientycalc.ButtonKeys.Key;
+import com.friedapps.scientycalc.ButtonKeys.KeyKind;
 import com.friedapps.scientycalc.calculator.ExpressionItem.TokenType;
 import com.friedapps.scientycalc.calculator.TokenBracket.BracketType;
 import com.friedapps.scientycalc.calculator.TokenOperator.OpType;
@@ -142,7 +143,7 @@ public class Tokenizer {
             }
             TokenBracket tB;
             // TODO figure out the brackets scheme
-            if (crumb == Key.kBrOpenClose) {
+            if (crumb == Key.kBrOpen) {
                 tB = new TokenBracket(BracketType.Open);
                 lastBracketType = BracketType.Open;
             } else {

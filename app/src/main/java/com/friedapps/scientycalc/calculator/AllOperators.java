@@ -1,9 +1,11 @@
 package com.friedapps.scientycalc.calculator;
 
+import com.friedapps.scientycalc.ButtonKeys;
 import com.friedapps.scientycalc.calculator.TokenOperator.Op;
 import com.friedapps.scientycalc.calculator.TokenOperator.OpAssoc;
-import com.friedapps.scientycalc.calculator.TokenOperator.OpType;
 import com.friedapps.scientycalc.calculator.TokenOperator.OpKind;
+import com.friedapps.scientycalc.calculator.TokenOperator.OpType;
+
 import java.util.HashMap;
 import java.util.Map;
 
