@@ -1,5 +1,6 @@
 package com.friedapps.scientycalc;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -71,6 +72,31 @@ public class ButtonKeys {
 
     public static KeyKind getKeyKind(Key k) {
         return keyDetailMap.get(k).getKind();
+    }
+
+    private static ArrayList<String> keysToStrings(ArrayList<Key> klist) {
+        ArrayList<String> strs = new ArrayList<String>(klist.size());
+        for (Key k : klist) {
+            strs.add(ButtonKeys.getKeySymbol(k));
+        }
+        return strs;
+    }
+
+    public static String keysToString(ArrayList<Key> klist,int cursor) {
+        ArrayList<String> strs = keysToStrings(klist);
+        StringBuilder ss = new StringBuilder();
+        for (int i=0;i<strs.size();++i) {
+            String si=strs.get(i);
+            if(cursor==i){
+                ss.append("|");
+            }
+            ss.append(si);
+        }
+        if(cursor==strs.size()){
+            ss.append("|");
+        }
+        return ss.toString();
+
     }
 
     static {

@@ -22,13 +22,14 @@ public class CalcActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_calc);
-        keyPressHandler = new KeyPressHandler();
+
         resultStr = "";
         exprStr = "";
         exprTV = (TextView) findViewById(R.id.txtCalcExpr);
         exprTV.setText(exprStr);
         resultTV = (TextView) findViewById(R.id.txtResult);
         resultTV.setText(resultStr);
+        keyPressHandler = new KeyPressHandler(exprTV);
     }
 
 

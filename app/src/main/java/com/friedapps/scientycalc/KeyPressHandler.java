@@ -79,7 +79,7 @@ public class KeyPressHandler {
                 break;
 
         }
-        //exprTV.setText(keys.toString());
+        exprTV.setText(ButtonKeys.keysToString(keys, posCursor));
     }
 
     private void addKeyNumeric(Key k) {
@@ -344,10 +344,12 @@ public class KeyPressHandler {
     private void addKeyMoveOperation(Key k) {
         switch (k) {
             case kMoveLeft:
-                --posCursor;
+                if (posCursor > 0)
+                    --posCursor;
                 break;
             case kMoveRight:
-                ++posCursor;
+                if (posCursor < keys.size())
+                    ++posCursor;
                 break;
             case kMoveLeftEnd:
                 posCursor = 0;
