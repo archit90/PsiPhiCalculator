@@ -26,17 +26,6 @@ public class KeyPressHandler {
         return instance;
     }
 
-    private static final Map<Integer, View.OnClickListener> keysEvent = new HashMap<Integer, View.OnClickListener>();
-
-    static {
-        keysEvent.put(R.id.btn0, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-    }
-
     private static int findInStringArray(String[] ary, String item) {
         int arylen = ary.length, index = -1;
         for (int i = 0; i < arylen; ++i) {

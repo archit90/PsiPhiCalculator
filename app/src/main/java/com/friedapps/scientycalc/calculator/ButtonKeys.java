@@ -10,7 +10,6 @@ public class ButtonKeys {
         k0, k1, k2, k3, k4, k5, k6, k7, k8, k9, kDot,
         kAdd, kSubt, kMul, kDiv, kExp, kMod,
         kPlusMinus, kSin, kCos, kTan, kLog,
-        kMC, kMR, kMemPlus, kMemMinus,
         kBrOpenClose, kAns
     }
 
@@ -53,11 +52,6 @@ public class ButtonKeys {
         keyMap.put(R.id.btnBrackets, Key.kBrOpenClose);
         keyMap.put(R.id.btnAnswer, Key.kAns);
 
-        keyMap.put(R.id.btnMC, Key.kMC);
-        keyMap.put(R.id.btnMR, Key.kMR);
-        keyMap.put(R.id.btnMemMinus, Key.kMemMinus);
-        keyMap.put(R.id.btnMemPlus, Key.kMemPlus);
-
         keyMap.put(R.id.btnSin, Key.kSin);
         keyMap.put(R.id.btnCos, Key.kCos);
         keyMap.put(R.id.btnTan, Key.kTan);
@@ -88,11 +82,6 @@ public class ButtonKeys {
 
         keySymbol.put(Key.kBrOpenClose, "");
         keySymbol.put(Key.kAns, "=");
-
-        keySymbol.put(Key.kMR, "");
-        keySymbol.put(Key.kMC, "");
-        keySymbol.put(Key.kMemPlus, "");
-        keySymbol.put(Key.kMemMinus, "");
 
     }
 }
