@@ -1,48 +1,49 @@
 package com.friedapps.scientycalc;
 
-import android.util.Log;
-import android.view.View;
-
+import com.friedapps.scientycalc.calculator.ButtonKeys;
+import com.friedapps.scientycalc.calculator.Tokenizer;
+import com.friedapps.scientycalc.calculator.ButtonKeys.Key;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class KeyPressHandler {
-    private static final String[] numkey = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."};
-    private static final String[] binaryOps = {"+", "-", "*", "/"};
-    private static final String[] calcOps = {"Ans", "Del", "M+", "MC"};
 
 
-    private static KeyPressHandler instance;
-    private ArrayList<String> tokens;
+    private ArrayList<ButtonKeys.Key> keys;
+    private int posCursor;
+    public Tokenizer tokens;
 
-    private KeyPressHandler() {
-        tokens = new ArrayList<String>();
+    public KeyPressHandler() {
+        keys = new ArrayList<Key>();
+        posCursor = 0;
     }
 
-    public static KeyPressHandler newInstance() {
-        if (instance == null)
-            instance = new KeyPressHandler();
-        return instance;
-    }
-
-    private static int findInStringArray(String[] ary, String item) {
-        int arylen = ary.length, index = -1;
-        for (int i = 0; i < arylen; ++i) {
-            if (item.equals(ary[i])) {
-                index = i;
-                break;
-            }
+    public void addKey(Key k) {
+        /* TODO
+            Handle press of this key k
+            If key = kAns evaluate to answer
+            handle brackets
+            distinguish between unary/binary operators
+         */
+        if(keys.size()==0){
+            keys.add(k);
+            ++posCursor;
+            return;
         }
-        return index;
+        Key lastKey = keys.get(posCursor-1);
+
     }
+
+    public void moveCursor(int pos) {
+        posCursor = pos;
+    }
+    /*
 
     public void handleKeypress(String keyText) {
         int idx;
         if ((idx = findInStringArray(numkey, keyText)) > 0) {
-            tokens.add(keyText);
+            keys.add(keyText);
         } else if ((idx = findInStringArray(binaryOps, keyText)) > 0) {
-            tokens.add(keyText);
+            keys.add(keyText);
         } else if ((idx = findInStringArray(calcOps, keyText)) > 0) {
             // TODO: improve this brittle code
             switch (idx) {
@@ -66,5 +67,5 @@ public class KeyPressHandler {
             Log.d("Calc", "Unknown Token found " + keyText);
         }
     }
-
+    */
 }

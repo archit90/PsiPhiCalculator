@@ -7,6 +7,7 @@ public class TokenOperator extends TokenObject {
     private int precedence;
     private OpAssoc assoc;
     private OpType type;
+    private OpKind kind;
 
     public ButtonKeys.Key getKey() {
         return key;
@@ -16,12 +17,14 @@ public class TokenOperator extends TokenObject {
         return val;
     }
 
-    public TokenOperator(Op val, ButtonKeys.Key key, int precedence, OpAssoc assoc, OpType type) {
+    public TokenOperator(Op val, ButtonKeys.Key key, int precedence, OpAssoc assoc,
+                         OpType type, OpKind kind) {
         this.val = val;
         this.key = key;
         this.precedence = precedence;
         this.assoc = assoc;
         this.type = type;
+        this.kind = kind;
     }
 
     public enum Op {
@@ -34,6 +37,10 @@ public class TokenOperator extends TokenObject {
         Left, Right
     }
 
+    public enum OpKind {
+        infix, prefix, postfix
+    }
+
     public enum OpType {Unary, Binary}
 
     public OpAssoc getAssoc() {
@@ -42,6 +49,10 @@ public class TokenOperator extends TokenObject {
 
     public OpType getType() {
         return type;
+    }
+
+    public OpKind getKind() {
+        return kind;
     }
 
     public static int comparePrecedence(TokenOperator o1, TokenOperator o2) {

@@ -10,10 +10,12 @@ public class ButtonKeys {
     public static class KeyDetail {
         private int kLength;
         private String kSymbol;
+        private KeyType kType;
 
-        public KeyDetail(int kLength, String kSymbol) {
+        public KeyDetail(int kLength, String kSymbol, KeyType type) {
             this.kLength = kLength;
             this.kSymbol = kSymbol;
+            this.kType = type;
         }
 
         public int getLength() {
@@ -23,6 +25,14 @@ public class ButtonKeys {
         public String getSymbol() {
             return kSymbol;
         }
+
+        public KeyType getType() {
+            return kType;
+        }
+    }
+
+    public enum KeyType {
+        Numeric, Variable, InfixOperator, PrefixOperator, PostfixOperator, Bracket, Operation
     }
 
     public enum Key {
@@ -86,33 +96,33 @@ public class ButtonKeys {
     }
 
     static {
-        keyDetailMap.put(Key.k0, new KeyDetail(1,"0"));
-        keyDetailMap.put(Key.k1, new KeyDetail(1,"1"));
-        keyDetailMap.put(Key.k2, new KeyDetail(1,"2"));
-        keyDetailMap.put(Key.k3, new KeyDetail(1,"3"));
-        keyDetailMap.put(Key.k4, new KeyDetail(1,"4"));
-        keyDetailMap.put(Key.k5, new KeyDetail(1,"5"));
-        keyDetailMap.put(Key.k6, new KeyDetail(1,"6"));
-        keyDetailMap.put(Key.k7, new KeyDetail(1,"7"));
-        keyDetailMap.put(Key.k8, new KeyDetail(1,"8"));
-        keyDetailMap.put(Key.k9, new KeyDetail(1,"9"));
-        keyDetailMap.put(Key.kDot, new KeyDetail(1,"."));
-        keyDetailMap.put(Key.kPlusMinus, new KeyDetail(1,"-"));
+        keyDetailMap.put(Key.k0, new KeyDetail(1, "0", KeyType.Numeric));
+        keyDetailMap.put(Key.k1, new KeyDetail(1, "1", KeyType.Numeric));
+        keyDetailMap.put(Key.k2, new KeyDetail(1, "2", KeyType.Numeric));
+        keyDetailMap.put(Key.k3, new KeyDetail(1, "3", KeyType.Numeric));
+        keyDetailMap.put(Key.k4, new KeyDetail(1, "4", KeyType.Numeric));
+        keyDetailMap.put(Key.k5, new KeyDetail(1, "5", KeyType.Numeric));
+        keyDetailMap.put(Key.k6, new KeyDetail(1, "6", KeyType.Numeric));
+        keyDetailMap.put(Key.k7, new KeyDetail(1, "7", KeyType.Numeric));
+        keyDetailMap.put(Key.k8, new KeyDetail(1, "8", KeyType.Numeric));
+        keyDetailMap.put(Key.k9, new KeyDetail(1, "9", KeyType.Numeric));
+        keyDetailMap.put(Key.kDot, new KeyDetail(1, ".", KeyType.Numeric));
+        keyDetailMap.put(Key.kPlusMinus, new KeyDetail(1, "-", KeyType.PrefixOperator));
 
-        keyDetailMap.put(Key.kAdd, new KeyDetail(1,"+"));
-        keyDetailMap.put(Key.kSubt, new KeyDetail(1,"-"));
-        keyDetailMap.put(Key.kMul, new KeyDetail(1,"*"));
-        keyDetailMap.put(Key.kDiv, new KeyDetail(1,"/"));
-        keyDetailMap.put(Key.kMod, new KeyDetail(1,"%"));
-        keyDetailMap.put(Key.kExp, new KeyDetail(1,"^"));
+        keyDetailMap.put(Key.kAdd, new KeyDetail(1, "+", KeyType.InfixOperator));
+        keyDetailMap.put(Key.kSubt, new KeyDetail(1, "-", KeyType.InfixOperator));
+        keyDetailMap.put(Key.kMul, new KeyDetail(1, "*", KeyType.InfixOperator));
+        keyDetailMap.put(Key.kDiv, new KeyDetail(1, "/", KeyType.InfixOperator));
+        keyDetailMap.put(Key.kMod, new KeyDetail(1, "%", KeyType.InfixOperator));
+        keyDetailMap.put(Key.kExp, new KeyDetail(1, "^", KeyType.InfixOperator));
 
-        keyDetailMap.put(Key.kBrOpenClose, new KeyDetail(1,""));
-        keyDetailMap.put(Key.kAns, new KeyDetail(1,"="));
+        keyDetailMap.put(Key.kBrOpenClose, new KeyDetail(1, "", KeyType.Bracket));
+        keyDetailMap.put(Key.kAns, new KeyDetail(1, "=", KeyType.Operation));
 
-        keyDetailMap.put(Key.kSin, new KeyDetail(3,"Sin"));
-        keyDetailMap.put(Key.kCos, new KeyDetail(3,"Cos"));
-        keyDetailMap.put(Key.kTan, new KeyDetail(3,"Tan"));
-        keyDetailMap.put(Key.kLog, new KeyDetail(3,"Log"));
+        keyDetailMap.put(Key.kSin, new KeyDetail(3, "Sin", KeyType.PrefixOperator));
+        keyDetailMap.put(Key.kCos, new KeyDetail(3, "Cos", KeyType.PrefixOperator));
+        keyDetailMap.put(Key.kTan, new KeyDetail(3, "Tan", KeyType.PrefixOperator));
+        keyDetailMap.put(Key.kLog, new KeyDetail(3, "Log", KeyType.PrefixOperator));
 
     }
 }
