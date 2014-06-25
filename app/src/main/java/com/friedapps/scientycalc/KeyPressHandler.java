@@ -3,6 +3,7 @@ package com.friedapps.scientycalc;
 import com.friedapps.scientycalc.calculator.ButtonKeys;
 import com.friedapps.scientycalc.calculator.Tokenizer;
 import com.friedapps.scientycalc.calculator.ButtonKeys.Key;
+import com.friedapps.scientycalc.calculator.ButtonKeys.KeyKind;
 import java.util.ArrayList;
 
 public class KeyPressHandler {
@@ -30,6 +31,9 @@ public class KeyPressHandler {
             return;
         }
         Key lastKey = keys.get(posCursor-1);
+        KeyKind lastKeyKind=ButtonKeys.getKeyKind(lastKey);
+        KeyKind currKeyKind=ButtonKeys.getKeyKind(k);
+        
 
     }
 
