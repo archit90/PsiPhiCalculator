@@ -32,14 +32,15 @@ public class ButtonKeys {
     }
 
     public enum KeyKind {
-        Numeric, Variable, InfixOperator, PrefixOperator, PostfixOperator, Bracket, Operation
+        Numeric, Variable, InfixOperator, PrefixOperator, PostfixOperator,
+        OpenBracket, CloseBracket, Operation
     }
 
     public enum Key {
         k0, k1, k2, k3, k4, k5, k6, k7, k8, k9, kDot,
         kAdd, kSubt, kMul, kDiv, kExp, kMod,
         kPlusMinus, kSin, kCos, kTan, kLog,
-        kBrOpenClose, kAns
+        kBrOpenClose, kAns, kDel
     }
 
     private static Map<Integer, Key> keyMap = new HashMap<Integer, Key>();
@@ -64,6 +65,7 @@ public class ButtonKeys {
     public static int getKeyLength(Key k) {
         return keyDetailMap.get(k).getLength();
     }
+
     public static KeyKind getKeyKind(int id) {
         return keyDetailMap.get(getKey(id)).getKind();
     }
@@ -71,6 +73,7 @@ public class ButtonKeys {
     public static KeyKind getKeyKind(Key k) {
         return keyDetailMap.get(k).getKind();
     }
+
     static {
         keyMap.put(R.id.btn0, Key.k0);
         keyMap.put(R.id.btn1, Key.k1);
@@ -99,6 +102,8 @@ public class ButtonKeys {
         keyMap.put(R.id.btnCos, Key.kCos);
         keyMap.put(R.id.btnTan, Key.kTan);
         keyMap.put(R.id.btnLog, Key.kLog);
+
+        keyMap.put(R.id.btnDel, Key.kDel);
     }
 
     static {
@@ -122,8 +127,9 @@ public class ButtonKeys {
         keyDetailMap.put(Key.kMod, new KeyDetail(1, "%", KeyKind.InfixOperator));
         keyDetailMap.put(Key.kExp, new KeyDetail(1, "^", KeyKind.InfixOperator));
 
-        keyDetailMap.put(Key.kBrOpenClose, new KeyDetail(1, "", KeyKind.Bracket));
-        keyDetailMap.put(Key.kAns, new KeyDetail(1, "=", KeyKind.Operation));
+        keyDetailMap.put(Key.kBrOpenClose, new KeyDetail(1, "", KeyKind.OpenBracket));
+        keyDetailMap.put(Key.kAns, new KeyDetail(0, "=", KeyKind.Operation));
+        keyDetailMap.put(Key.kDel, new KeyDetail(0, "", KeyKind.Operation));
 
         keyDetailMap.put(Key.kSin, new KeyDetail(3, "Sin", KeyKind.PrefixOperator));
         keyDetailMap.put(Key.kCos, new KeyDetail(3, "Cos", KeyKind.PrefixOperator));

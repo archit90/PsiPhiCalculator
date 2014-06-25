@@ -4,6 +4,7 @@ package com.friedapps.scientycalc.calculator;
 import android.util.Log;
 
 import com.friedapps.scientycalc.calculator.ButtonKeys.Key;
+import com.friedapps.scientycalc.calculator.ButtonKeys.KeyKind;
 import com.friedapps.scientycalc.calculator.ExpressionItem.TokenType;
 import com.friedapps.scientycalc.calculator.TokenBracket.BracketType;
 import com.friedapps.scientycalc.calculator.TokenOperator.OpType;
@@ -11,7 +12,7 @@ import com.friedapps.scientycalc.calculator.TokenOperator.OpType;
 public class Tokenizer {
 
     public Expression infix;
-    private int ctr;
+    private int counter;
     private TokenType lastTokenType = null;
     private BracketType lastBracketType = null;
     private OpType lastOperatorType = null;
@@ -19,12 +20,77 @@ public class Tokenizer {
 
     public Tokenizer() {
         infix = new Expression();
-        ctr = 0;
+        counter = 0;
         dnum = "";
     }
 
+    public void addTokenNumeric(Key crumb) throws Exception {
+        if (ButtonKeys.getKeyKind(crumb) == KeyKind.Numeric) {
+            if (lastTokenType == TokenType.Constant) {
+                if (crumb == Key.kDot && dnum.indexOf(".") < 0) {
+                    dnum += ".";
+                } else if (crumb != Key.kDot) {
+                    dnum += ButtonKeys.getKeySymbol(crumb);
+                } else {
+                    // TODO: improper number
+                }
+            }
+        } else {
+            // TODO: throw logical error
+        }
+    }
+
+    public void addTokenVariable(Key crumb) {
+        if (ButtonKeys.getKeyKind(crumb) == KeyKind.Variable) {
+
+        } else {
+            // TODO: throw logical error
+        }
+    }
+
+    public void addTokenBracket(Key crumb) {
+        if (ButtonKeys.getKeyKind(crumb) == KeyKind.OpenBracket) {
+
+        } else {
+            // TODO: throw logical error
+        }
+    }
+
+    public void addTokenInfixOp(Key crumb) {
+        if (ButtonKeys.getKeyKind(crumb) == KeyKind.InfixOperator) {
+
+        } else {
+            // TODO: throw logical error
+        }
+    }
+
+    public void addTokenPrefixOp(Key crumb) {
+        if (ButtonKeys.getKeyKind(crumb) == KeyKind.PrefixOperator) {
+
+        } else {
+            // TODO: throw logical error
+        }
+    }
+
+    public void addTokenPostfixOp(Key crumb) {
+        if (ButtonKeys.getKeyKind(crumb) == KeyKind.PostfixOperator) {
+
+        } else {
+            // TODO: throw logical error
+        }
+    }
+
+    public void addTokenOperation(Key crumb) {
+        if (ButtonKeys.getKeyKind(crumb) == KeyKind.Operation) {
+
+        } else {
+            // TODO: throw logical error
+        }
+    }
+
+
     public boolean addToken(Key crumb) {
-        // TODO: implement ctr
+        // TODO: implement counter
         boolean isDot = false, isNum = false;
         int num = 0;
         if (crumb == Key.kAns && dnum.length() > 0) {

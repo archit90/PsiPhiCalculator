@@ -4,13 +4,16 @@ import com.friedapps.scientycalc.calculator.ButtonKeys;
 import com.friedapps.scientycalc.calculator.Tokenizer;
 import com.friedapps.scientycalc.calculator.ButtonKeys.Key;
 import com.friedapps.scientycalc.calculator.ButtonKeys.KeyKind;
+import com.friedapps.scientycalc.calculator.TokenBracket.BracketType;
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class KeyPressHandler {
 
 
     private ArrayList<ButtonKeys.Key> keys;
     private int posCursor;
+    private Stack<BracketType> bracketsStack;
     public Tokenizer tokens;
 
     public KeyPressHandler() {
@@ -33,7 +36,47 @@ public class KeyPressHandler {
         Key lastKey = keys.get(posCursor-1);
         KeyKind lastKeyKind=ButtonKeys.getKeyKind(lastKey);
         KeyKind currKeyKind=ButtonKeys.getKeyKind(k);
-        
+        switch(lastKeyKind){
+            case OpenBracket:
+                switch(currKeyKind){
+                    case OpenBracket:
+                        // TODO: find out which bracket was inserted
+                        tokens.addToken(k);
+                        break;
+                    case CloseBracket:
+                        // TODO: logical error if reach here
+                        break;
+                    case Numeric:
+                    case Variable:
+                        tokens.addToken(k);
+                        break;
+                    case InfixOperator:
+                        break;
+                    case PrefixOperator:
+                        break;
+                    case PostfixOperator:
+                        break;
+                    case Operation:
+                        break;
+                }
+            case CloseBracket:
+            case Numeric:
+                switch(currKeyKind){
+
+                }
+            case Variable:
+                // add this number or variable
+                tokens.addToken(k);
+                break;
+            case InfixOperator:
+                break;
+            case PostfixOperator:
+                break;
+            case PrefixOperator:
+                break;
+            case Operation:
+                break;
+        }
 
     }
 
