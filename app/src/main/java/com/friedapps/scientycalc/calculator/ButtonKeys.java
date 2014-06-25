@@ -40,7 +40,8 @@ public class ButtonKeys {
         k0, k1, k2, k3, k4, k5, k6, k7, k8, k9, kDot,
         kAdd, kSubt, kMul, kDiv, kExp, kMod,
         kPlusMinus, kSin, kCos, kTan, kLog,
-        kBrOpenClose, kAns, kDel
+        kBrOpenClose, kAns, kDel,
+        kMoveLeft, kMoveRight, kMoveRightEnd, kMoveLeftEnd
     }
 
     private static Map<Integer, Key> keyMap = new HashMap<Integer, Key>();
@@ -97,13 +98,17 @@ public class ButtonKeys {
 
         keyMap.put(R.id.btnBrackets, Key.kBrOpenClose);
         keyMap.put(R.id.btnAnswer, Key.kAns);
+        keyMap.put(R.id.btnDel, Key.kDel);
 
         keyMap.put(R.id.btnSin, Key.kSin);
         keyMap.put(R.id.btnCos, Key.kCos);
         keyMap.put(R.id.btnTan, Key.kTan);
         keyMap.put(R.id.btnLog, Key.kLog);
 
-        keyMap.put(R.id.btnDel, Key.kDel);
+        keyMap.put(R.id.btnMvLeft, Key.kMoveLeft);
+        keyMap.put(R.id.btnMvRight, Key.kMoveRight);
+        keyMap.put(R.id.btnMvLeftEnd, Key.kMoveLeftEnd);
+        keyMap.put(R.id.btnMvRightEnd, Key.kMoveRightEnd);
     }
 
     static {
@@ -130,6 +135,11 @@ public class ButtonKeys {
         keyDetailMap.put(Key.kBrOpenClose, new KeyDetail(1, "", KeyKind.OpenBracket));
         keyDetailMap.put(Key.kAns, new KeyDetail(0, "=", KeyKind.Operation));
         keyDetailMap.put(Key.kDel, new KeyDetail(0, "", KeyKind.Operation));
+
+        keyDetailMap.put(Key.kMoveLeft, new KeyDetail(0, "", KeyKind.Operation));
+        keyDetailMap.put(Key.kMoveRight, new KeyDetail(0, "", KeyKind.Operation));
+        keyDetailMap.put(Key.kMoveLeftEnd, new KeyDetail(0, "", KeyKind.Operation));
+        keyDetailMap.put(Key.kMoveRightEnd, new KeyDetail(0, "", KeyKind.Operation));
 
         keyDetailMap.put(Key.kSin, new KeyDetail(3, "Sin", KeyKind.PrefixOperator));
         keyDetailMap.put(Key.kCos, new KeyDetail(3, "Cos", KeyKind.PrefixOperator));

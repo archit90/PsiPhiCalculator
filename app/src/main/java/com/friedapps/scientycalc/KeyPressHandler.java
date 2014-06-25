@@ -1,10 +1,11 @@
 package com.friedapps.scientycalc;
 
 import com.friedapps.scientycalc.calculator.ButtonKeys;
-import com.friedapps.scientycalc.calculator.Tokenizer;
 import com.friedapps.scientycalc.calculator.ButtonKeys.Key;
 import com.friedapps.scientycalc.calculator.ButtonKeys.KeyKind;
 import com.friedapps.scientycalc.calculator.TokenBracket.BracketType;
+import com.friedapps.scientycalc.calculator.Tokenizer;
+
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -28,57 +29,74 @@ public class KeyPressHandler {
             handle brackets
             distinguish between unary/binary operators
          */
-        if(keys.size()==0){
+        if (keys.size() == 0) {
             keys.add(k);
             ++posCursor;
             return;
         }
-        Key lastKey = keys.get(posCursor-1);
-        KeyKind lastKeyKind=ButtonKeys.getKeyKind(lastKey);
-        KeyKind currKeyKind=ButtonKeys.getKeyKind(k);
-        switch(lastKeyKind){
+        KeyKind currKeyKind = ButtonKeys.getKeyKind(k);
+        switch (currKeyKind) {
             case OpenBracket:
-                switch(currKeyKind){
-                    case OpenBracket:
-                        // TODO: find out which bracket was inserted
-                        tokens.addToken(k);
-                        break;
-                    case CloseBracket:
-                        // TODO: logical error if reach here
-                        break;
-                    case Numeric:
-                    case Variable:
-                        tokens.addToken(k);
-                        break;
-                    case InfixOperator:
-                        break;
-                    case PrefixOperator:
-                        break;
-                    case PostfixOperator:
-                        break;
-                    case Operation:
-                        break;
-                }
             case CloseBracket:
+                addKeyBracket(k);
+                break;
             case Numeric:
-                switch(currKeyKind){
-
-                }
+                addKeyNumeric(k);
+                break;
             case Variable:
-                // add this number or variable
-                tokens.addToken(k);
+                addKeyVariable(k);
                 break;
             case InfixOperator:
+                addKeyInfixOp(k);
                 break;
             case PostfixOperator:
+                addKeyPostfixOp(k);
                 break;
             case PrefixOperator:
+                addKeyPrefixOp(k);
                 break;
             case Operation:
+                addKeyOperation(k);
                 break;
         }
 
     }
+
+    private void addKeyNumeric(Key k) {
+        Key lastKey = keys.get(posCursor - 1);
+        KeyKind lastKeyKind = ButtonKeys.getKeyKind(lastKey);
+    }
+
+    private void addKeyVariable(Key k) {
+        Key lastKey = keys.get(posCursor - 1);
+        KeyKind lastKeyKind = ButtonKeys.getKeyKind(lastKey);
+    }
+
+    private void addKeyInfixOp(Key k) {
+        Key lastKey = keys.get(posCursor - 1);
+        KeyKind lastKeyKind = ButtonKeys.getKeyKind(lastKey);
+    }
+
+    private void addKeyPrefixOp(Key k) {
+        Key lastKey = keys.get(posCursor - 1);
+        KeyKind lastKeyKind = ButtonKeys.getKeyKind(lastKey);
+    }
+
+    private void addKeyPostfixOp(Key k) {
+        Key lastKey = keys.get(posCursor - 1);
+        KeyKind lastKeyKind = ButtonKeys.getKeyKind(lastKey);
+    }
+
+    private void addKeyBracket(Key k) {
+        Key lastKey = keys.get(posCursor - 1);
+        KeyKind lastKeyKind = ButtonKeys.getKeyKind(lastKey);
+    }
+
+    private void addKeyOperation(Key k) {
+        Key lastKey = keys.get(posCursor - 1);
+        KeyKind lastKeyKind = ButtonKeys.getKeyKind(lastKey);
+    }
+
 
     public void moveCursor(int pos) {
         posCursor = pos;

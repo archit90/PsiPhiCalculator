@@ -54,6 +54,7 @@
                 android:layout_row="0"
                 android:onClick="onButtonClick"
                 android:text="Sin" />
+
             <Button
                 android:id="@+id/btnCos"
                 style="@style/MyButtonStyleSmallAddonPad"
@@ -63,6 +64,7 @@
                 android:layout_row="0"
                 android:onClick="onButtonClick"
                 android:text="Cos" />
+
             <Button
                 android:id="@+id/btnTan"
                 style="@style/MyButtonStyleSmallAddonPad"
@@ -72,6 +74,7 @@
                 android:layout_row="0"
                 android:onClick="onButtonClick"
                 android:text="Tan" />
+
             <Button
                 android:id="@+id/btnLog"
                 style="@style/MyButtonStyleSmallAddonPad"
@@ -327,6 +330,46 @@
             android:columnCount="5"
             android:rowCount="1">
 
+            <Button
+                android:id="@+id/btnMvLeftEnd"
+                style="@style/MyButtonStyleSmallNumpad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_row="0"
+                android:onClick="onButtonClick"
+                android:text="|<" />
+
+            <Button
+                android:id="@+id/btnMvLeft"
+                style="@style/MyButtonStyleSmallNumpad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_row="0"
+                android:onClick="onButtonClick"
+                android:text="<-" />
+
+
+            <Button
+                android:id="@+id/btnMvRight"
+                style="@style/MyButtonStyleSmallNumpad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_row="0"
+                android:onClick="onButtonClick"
+                android:text="->" />
+
+            <Button
+                android:id="@+id/btnMvRightEnd"
+                style="@style/MyButtonStyleSmallNumpad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="3"
+                android:layout_row="0"
+                android:onClick="onButtonClick"
+                android:text=">|" />
 
             <Button
                 android:id="@+id/btnDel"

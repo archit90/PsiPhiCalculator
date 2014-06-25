@@ -24,7 +24,7 @@ public class Tokenizer {
         dnum = "";
     }
 
-    public void addTokenNumeric(Key crumb) throws Exception {
+    public void addTokenNumeric(Key crumb) {
         if (ButtonKeys.getKeyKind(crumb) == KeyKind.Numeric) {
             if (lastTokenType == TokenType.Constant) {
                 if (crumb == Key.kDot && dnum.indexOf(".") < 0) {
