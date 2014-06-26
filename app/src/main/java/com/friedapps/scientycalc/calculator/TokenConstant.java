@@ -8,7 +8,7 @@ public class TokenConstant extends TokenObject {
     public double val;
     private static final DecimalFormat decFormat = new DecimalFormat("0." + repeat("#", 12));
     private static final DecimalFormat intFormat = new DecimalFormat("0");
-    private static final DecimalFormat scienFormat = new DecimalFormat("#E");
+    private static final DecimalFormat scienFormat = new DecimalFormat("E");
 
     private static String repeat(String pattern, int times) {
         StringBuilder sb = new StringBuilder();

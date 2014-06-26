@@ -6,13 +6,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class CalcActivity extends Activity {
 
     private int total = 0;
     KeyPressHandler keyPressHandler;
-    TextView exprTV, resultTV;
+    EditText resultET, exprET;
     String resultStr, exprStr;
 
     @Override
@@ -22,11 +23,11 @@ public class CalcActivity extends Activity {
 
         resultStr = "";
         exprStr = "";
-        exprTV = (TextView) findViewById(R.id.txtCalcExpr);
-        exprTV.setText(exprStr);
-        resultTV = (TextView) findViewById(R.id.txtResult);
-        resultTV.setText(resultStr);
-        keyPressHandler = new KeyPressHandler(exprTV, resultTV);
+        exprET = (EditText) findViewById(R.id.edtxtCalcExpr);
+        exprET.setText(exprStr);
+        resultET = (EditText) findViewById(R.id.edtxtResult);
+        resultET.setText(resultStr);
+        keyPressHandler = new KeyPressHandler(exprET, resultET);
         Button resetBtn = (Button) findViewById(R.id.btnReset);
         resetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
