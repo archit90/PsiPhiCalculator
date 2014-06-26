@@ -439,36 +439,4 @@ public class KeyPressHandler {
         posCursor = pos;
     }
 
-    /*
-
-    public void handleKeypress(String keyText) {
-        int idx;
-        if ((idx = findInStringArray(numkey, keyText)) > 0) {
-            keys.add(keyText);
-        } else if ((idx = findInStringArray(binaryOps, keyText)) > 0) {
-            keys.add(keyText);
-        } else if ((idx = findInStringArray(calcOps, keyText)) > 0) {
-            // TODO: improve this brittle code
-            switch (idx) {
-                case 0:
-                    // TODO: call function to calculate result
-                    break;
-                case 1:
-                    // TODO: call function to backwards delete
-                    break;
-                case 2:
-                    // TODO: call function to add to memory
-                    break;
-                case 3:
-                    // TODO: call function to clear memory
-                    break;
-                default:
-                    break;
-            }
-
-        } else {
-            Log.d("Calc", "Unknown Token found " + keyText);
-        }
-    }
-    */
 }

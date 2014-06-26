@@ -28,22 +28,21 @@ public class Tokenizer {
         if (crumb == Key.kAns && dnum.length() > 0) {
             TokenConstant tC = new TokenConstant(dnum);
             insertTokenInExpression(-1, tC, TokenType.Constant);
-            // TODO: Evaluate answer
-        } else if ((isDot = crumb == Key.kDot) ||
+
+        } else if ((isDot = (crumb == Key.kDot)) ||
                 (isNum = ((num = TokenConstant.getDigit(crumb)) >= 0))) {
-            if (lastTokenType == TokenType.Constant) {
-                if ((isDot && dnum.indexOf('.') < 0)) {
-                    dnum += ".";
-                } else if (isNum) {
-                    dnum += num;
-                } else {
-                    // decimal point already exists
-                    // TODO: throw error NumberFormatException
-                    Log.d("Calc", "Decimal point already exists");
-                    return false;
-                }
+            if (lastTokenType != TokenType.Constant) {
+                dnum = "";
+            }
+            if ((isDot && dnum.indexOf('.') < 0)) {
+                dnum += ".";
+            } else if (isNum) {
+                dnum += num;
             } else {
-                dnum = "" + num;
+                // decimal point already exists
+                // TODO: throw error NumberFormatException
+                Log.d("Calc", "Decimal point already exists");
+                return false;
             }
             lastTokenType = TokenType.Constant;
         } else if (AllOperators.isOperator(crumb)) {
@@ -77,7 +76,6 @@ public class Tokenizer {
                 dnum = "";
             }
             TokenBracket tB;
-            // TODO figure out the brackets scheme
             if (crumb == Key.kBrOpen) {
                 tB = new TokenBracket(BracketType.Open);
             } else {
