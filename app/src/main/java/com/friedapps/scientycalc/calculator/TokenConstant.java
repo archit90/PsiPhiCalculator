@@ -2,8 +2,20 @@ package com.friedapps.scientycalc.calculator;
 
 import com.friedapps.scientycalc.ButtonKeys;
 
+import java.text.DecimalFormat;
+
 public class TokenConstant extends TokenObject {
     public double val;
+    private static final DecimalFormat decFormat = new DecimalFormat("0." + repeat("#", 12));
+    private static final DecimalFormat intFormat = new DecimalFormat("0");
+    private static final DecimalFormat scienFormat = new DecimalFormat("#E");
+
+    private static String repeat(String pattern, int times) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < times; ++i)
+            sb.append(pattern);
+        return sb.toString();
+    }
 
     public TokenConstant(double val) {
         this.val = val;
@@ -56,15 +68,16 @@ public class TokenConstant extends TokenObject {
 
     public String toString() {
         if (val >= 0) {
-            if (val == Math.floor(val)) {
-                return "" + ((long) val);
-            }
+            if (val == Math.floor(val))
+                return intFormat.format(val);
+            else
+                return decFormat.format(val);
         } else {
-            if (val == Math.ceil(val)) {
-                return "" + ((long) val);
-            }
+            if (val == Math.ceil(val))
+                return intFormat.format(val);
+            else
+                return decFormat.format(val);
         }
-        return "" + val;
     }
 
 }

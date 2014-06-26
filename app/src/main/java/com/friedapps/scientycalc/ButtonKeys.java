@@ -84,18 +84,16 @@ public class ButtonKeys {
 
     public static String keysToString(ArrayList<Key> klist, int cursor) {
         ArrayList<String> strs = keysToStrings(klist);
-        StringBuilder ss = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < strs.size(); ++i) {
-            String si = strs.get(i);
-            if (cursor == i) {
-                ss.append("|");
-            }
-            ss.append(si);
+            if (cursor == i)
+                sb.append("|");
+            sb.append(strs.get(i));
         }
         if (cursor == strs.size()) {
-            ss.append("|");
+            sb.append("|");
         }
-        return ss.toString();
+        return sb.toString();
 
     }
 
