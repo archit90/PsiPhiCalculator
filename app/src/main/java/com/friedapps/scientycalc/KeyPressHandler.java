@@ -1,14 +1,12 @@
 package com.friedapps.scientycalc;
 
 import android.util.Log;
-import android.widget.TextView;
 
 import com.friedapps.scientycalc.ButtonKeys.Key;
 import com.friedapps.scientycalc.ButtonKeys.KeyKind;
 import com.friedapps.scientycalc.calculator.Expression;
 import com.friedapps.scientycalc.calculator.ExpressionEvaluator;
 import com.friedapps.scientycalc.calculator.ExpressionItem;
-import com.friedapps.scientycalc.calculator.TokenBracket.BracketType;
 import com.friedapps.scientycalc.calculator.Tokenizer;
 
 import java.util.ArrayList;
@@ -19,26 +17,44 @@ public class KeyPressHandler {
 
     public ArrayList<ButtonKeys.Key> keys;
     private int posCursor;
-    private Stack<BracketType> bracketsStack;
     private Tokenizer tokens;
-    private TextView exprTV;
-    private TextView resTV;
+    private EditTextExtended exprEdtxt;
+    private EditTextExtended resEdtxt;
+    private static KeyPressHandler instance;
 
-    public KeyPressHandler(TextView tv, TextView rtv) {
+    private KeyPressHandler(EditTextExtended expr, EditTextExtended res) {
         keys = new ArrayList<Key>();
         posCursor = 0;
-        exprTV = tv;
-        resTV = rtv;
+        exprEdtxt = expr;
+        resEdtxt = res;
+    }
+
+    public static KeyPressHandler newInstance(EditTextExtended etxtexpr, EditTextExtended etxtres) {
+        if (instance == null) {
+            instance = new KeyPressHandler(etxtexpr, etxtres);
+        }
+        return instance;
     }
 
     public void reset() {
         keys = new ArrayList<Key>();
         posCursor = 0;
-        exprTV.setText("");
-        resTV.setText("");
+        exprEdtxt.setText("");
+        resEdtxt.setText("");
     }
 
     public void addKey(Key k) {
+        int txtCursorPos = exprEdtxt.getCursorPosition(), ctrPos = 0;
+        posCursor = txtCursorPos;
+        for (int i = 0; i < keys.size(); i++) {
+            int ksize = keys.get(i).getLength();
+            if (ctrPos <= txtCursorPos) {
+                ctrPos += ksize;
+                posCursor -= ksize - 1;
+            } else {
+                break;
+            }
+        }
         KeyKind currKeyKind = ButtonKeys.getKeyKind(k);
 
         if (keys.size() == 0) {
@@ -52,7 +68,7 @@ public class KeyPressHandler {
                     ++posCursor;
                     break;
             }
-            exprTV.setText(ButtonKeys.keysToString(keys, posCursor));
+            exprEdtxt.setText(ButtonKeys.keysToString(keys, posCursor));
             return;
         }
 
@@ -84,8 +100,8 @@ public class KeyPressHandler {
                 break;
 
         }
-        // TODO: improve this method of displaying expression in exprTV
-        exprTV.setText(ButtonKeys.keysToString(keys, posCursor));
+        // TODO: improve this method of displaying expression in exprEdtxt
+        exprEdtxt.setText(ButtonKeys.keysToString(keys, posCursor));
     }
 
     private void addKeyNumeric(Key k) {
@@ -394,7 +410,7 @@ public class KeyPressHandler {
                 Log.d("Calc", postfix.toString());
                 ExpressionItem ans = ExpressionEvaluator.evaluateExpression(postfix);
                 Log.d("Calc", ans.toString());
-                resTV.setText(ans.toString());
+                resEdtxt.setText(ans.toString());
                 break;
             case kDel:
                 if (posCursor > 0) {

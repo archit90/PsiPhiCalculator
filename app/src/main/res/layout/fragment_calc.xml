@@ -6,7 +6,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <EditText
+    <com.friedapps.scientycalc.EditTextExtended
         android:id="@+id/edtxtCalcExpr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
         android:focusableInTouchMode="true"
         android:hint="Expression" />
 
-    <EditText
+    <com.friedapps.scientycalc.EditTextExtended
         android:id="@+id/edtxtResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

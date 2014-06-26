@@ -13,7 +13,7 @@ public class CalcActivity extends Activity {
 
     private int total = 0;
     KeyPressHandler keyPressHandler;
-    EditText resultET, exprET;
+    EditTextExtended resultET, exprET;
     String resultStr, exprStr;
 
     @Override
@@ -23,11 +23,11 @@ public class CalcActivity extends Activity {
 
         resultStr = "";
         exprStr = "";
-        exprET = (EditText) findViewById(R.id.edtxtCalcExpr);
+        exprET = (EditTextExtended) findViewById(R.id.edtxtCalcExpr);
         exprET.setText(exprStr);
-        resultET = (EditText) findViewById(R.id.edtxtResult);
+        resultET = (EditTextExtended) findViewById(R.id.edtxtResult);
         resultET.setText(resultStr);
-        keyPressHandler = new KeyPressHandler(exprET, resultET);
+        keyPressHandler = KeyPressHandler.newInstance(exprET, resultET);
         Button resetBtn = (Button) findViewById(R.id.btnReset);
         resetBtn.setOnClickListener(new View.OnClickListener() {
             @Override

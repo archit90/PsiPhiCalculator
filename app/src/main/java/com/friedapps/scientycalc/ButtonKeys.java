@@ -32,7 +32,7 @@ public class ButtonKeys {
 
     public enum KeyKind {
         Numeric, Variable, InfixOperator, PrefixOperator, PostfixOperator,
-        OpenBracket, CloseBracket, Operation, MoveOperation
+        OpenBracket, CloseBracket, Operation, MoveOperation;
     }
 
     public enum Key {
@@ -40,7 +40,14 @@ public class ButtonKeys {
         kAdd, kSubt, kMul, kDiv, kExp, kMod,
         kPlusMinus, kSin, kCos, kTan, kLog,
         kBrOpen, kBrClose, kAns, kDel,
-        kMoveLeft, kMoveRight, kMoveRightEnd, kMoveLeftEnd
+        kMoveLeft, kMoveRight, kMoveRightEnd, kMoveLeftEnd;
+
+        public String toString(){
+            return getKeySymbol(this);
+        }
+        public int getLength(){
+            return getKeyLength(this);
+        }
     }
 
     private static Map<Integer, Key> keyMap = new HashMap<Integer, Key>();
@@ -50,24 +57,12 @@ public class ButtonKeys {
         return keyMap.get(id);
     }
 
-    public static String getKeySymbol(int id) {
-        return keyDetailMap.get(getKey(id)).getSymbol();
-    }
-
     public static String getKeySymbol(Key k) {
         return keyDetailMap.get(k).getSymbol();
     }
 
-    public static int getKeyLength(int id) {
-        return keyDetailMap.get(getKey(id)).getLength();
-    }
-
     public static int getKeyLength(Key k) {
         return keyDetailMap.get(k).getLength();
-    }
-
-    public static KeyKind getKeyKind(int id) {
-        return keyDetailMap.get(getKey(id)).getKind();
     }
 
     public static KeyKind getKeyKind(Key k) {
@@ -77,7 +72,7 @@ public class ButtonKeys {
     private static ArrayList<String> keysToStrings(ArrayList<Key> klist) {
         ArrayList<String> strs = new ArrayList<String>(klist.size());
         for (Key k : klist) {
-            strs.add(ButtonKeys.getKeySymbol(k));
+            strs.add(k.toString());
         }
         return strs;
     }
@@ -156,7 +151,7 @@ public class ButtonKeys {
 
         keyDetailMap.put(Key.kBrOpen, new KeyDetail(1, "(", KeyKind.OpenBracket));
         keyDetailMap.put(Key.kBrClose, new KeyDetail(1, ")", KeyKind.CloseBracket));
-        keyDetailMap.put(Key.kAns, new KeyDetail(0, "=", KeyKind.Operation));
+        keyDetailMap.put(Key.kAns, new KeyDetail(0, "", KeyKind.Operation));
         keyDetailMap.put(Key.kDel, new KeyDetail(0, "", KeyKind.Operation));
 
         keyDetailMap.put(Key.kMoveLeft, new KeyDetail(0, "", KeyKind.MoveOperation));
