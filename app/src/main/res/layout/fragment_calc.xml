@@ -338,7 +338,7 @@
                 android:layout_column="0"
                 android:layout_row="0"
                 android:onClick="onButtonClick"
-                android:text="|&lt;" />
+                android:text="|&lt;=" />
 
             <Button
                 android:id="@+id/btnMvLeft"
@@ -348,7 +348,7 @@
                 android:layout_column="1"
                 android:layout_row="0"
                 android:onClick="onButtonClick"
-                android:text="&lt;-" />
+                android:text="&lt;=" />
 
 
             <Button
@@ -359,7 +359,7 @@
                 android:layout_column="2"
                 android:layout_row="0"
                 android:onClick="onButtonClick"
-                android:text="-&gt;" />
+                android:text="=&gt;" />
 
             <Button
                 android:id="@+id/btnMvRightEnd"
@@ -369,7 +369,7 @@
                 android:layout_column="3"
                 android:layout_row="0"
                 android:onClick="onButtonClick"
-                android:text="&gt;|" />
+                android:text="=&gt;|" />
 
             <Button
                 android:id="@+id/btnDel"
@@ -379,8 +379,17 @@
                 android:layout_column="4"
                 android:layout_row="0"
                 android:onClick="onButtonClick"
-                android:text="Del" />
+                android:text="&lt;X|" />
 
         </GridLayout>
     </GridLayout>
+
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_alignParentBottom="true"
+        android:text="Reset"
+        android:textSize="18dp"
+        android:padding="2dp"/>
 </RelativeLayout>

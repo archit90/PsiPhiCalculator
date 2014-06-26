@@ -20,25 +20,29 @@ public class KeyPressHandler {
     public ArrayList<ButtonKeys.Key> keys;
     private int posCursor;
     private Stack<BracketType> bracketsStack;
-    public Tokenizer tokens;
+    private Tokenizer tokens;
     private TextView exprTV;
+    private TextView resTV;
 
-    public KeyPressHandler(TextView tv) {
+    public KeyPressHandler(TextView tv,TextView rtv) {
         keys = new ArrayList<Key>();
         posCursor = 0;
         exprTV = tv;
+        resTV=rtv;
+    }
 
+    public void reset() {
+        keys = new ArrayList<Key>();
+        posCursor = 0;
+        exprTV.setText("");
+        resTV.setText("");
     }
 
     public void addKey(Key k) {
-        /* TODO
-            Handle press of this key k
-            If key = kAns evaluate to answer
-            handle brackets
-            distinguish between unary/binary operators
-         */
         KeyKind currKeyKind = ButtonKeys.getKeyKind(k);
+
         if (keys.size() == 0) {
+            // TODO remove this ugly code
             switch (currKeyKind) {
                 case Numeric:
                 case Variable:
@@ -48,6 +52,7 @@ public class KeyPressHandler {
                     ++posCursor;
                     break;
             }
+            exprTV.setText(ButtonKeys.keysToString(keys, posCursor));
             return;
         }
 
@@ -79,6 +84,7 @@ public class KeyPressHandler {
                 break;
 
         }
+        // TODO: improve this method of displaying expression in exprTV
         exprTV.setText(ButtonKeys.keysToString(keys, posCursor));
     }
 
@@ -189,6 +195,18 @@ public class KeyPressHandler {
     }
 
     private void addKeyPrefixOp(Key k) {
+        boolean addOpenBracket;
+        switch (k) {
+            case kSin:
+            case kCos:
+            case kTan:
+            case kLog:
+                addOpenBracket = true;
+                break;
+            default:
+                addOpenBracket = false;
+                break;
+        }
         if (posCursor == 0) {
             Key nextKey = keys.get(posCursor);
             KeyKind nextKeyKind = ButtonKeys.getKeyKind(nextKey);
@@ -214,6 +232,7 @@ public class KeyPressHandler {
         KeyKind prevKeyKind = ButtonKeys.getKeyKind(prevKey);
         switch (prevKeyKind) {
             case PrefixOperator:
+                // k is current key to be inputted
                 if (k == Key.kPlusMinus) {
                     if (posCursor < keys.size()) {
                         Key nextKey = keys.get(posCursor);
@@ -222,17 +241,22 @@ public class KeyPressHandler {
                         }
                     }
                     if (prevKey == Key.kPlusMinus) {
-                        keys.remove(posCursor--);
+                        keys.remove(--posCursor);
                     } else {
+                        keys.add(posCursor++, Key.kBrOpen);
                         keys.add(posCursor++, k);
                     }
                 } else {
                     keys.add(posCursor++, k);
+                    if (addOpenBracket)
+                        keys.add(posCursor++, Key.kBrOpen);
                 }
                 break;
             case OpenBracket:
             case InfixOperator:
                 keys.add(posCursor++, k);
+                if (addOpenBracket)
+                    keys.add(posCursor++, Key.kBrOpen);
                 break;
             case Numeric:
             case Variable:
@@ -288,50 +312,89 @@ public class KeyPressHandler {
             }
             return;
         }
-        Stack<Key> bracketStack = matchBrackets(posCursor);
-        if (bracketStack == null) {
+        int bracketsStatus = matchBracketsStatus(posCursor - 1);
+        if (bracketsStatus < 0) {
             // TODO: mismatch brackets
         } else {
-            if (bracketStack.empty()) {
-                keys.add(posCursor++, Key.kBrOpen);
+            Key prevKey = keys.get(posCursor - 1);
+            KeyKind prevKeyKind = ButtonKeys.getKeyKind(prevKey);
+
+            if (bracketsStatus > 0) {
+                // if open brackets are more
+                switch (prevKeyKind) {
+
+                    case Numeric:
+                    case Variable:
+                    case PostfixOperator:
+                    case CloseBracket:
+                        keys.add(posCursor++, Key.kBrClose);
+                        break;
+                    case OpenBracket:
+                    case PrefixOperator:
+                    case InfixOperator:
+                        keys.add(posCursor++, Key.kBrOpen);
+                        break;
+                    default:
+                        // logical error if reach here
+                        break;
+                }
             } else {
-                keys.add(posCursor++, Key.kBrClose);
+                // if open close brackets are equal
+                switch (prevKeyKind) {
+                    case CloseBracket:
+                    case Numeric:
+                    case Variable:
+                    case PostfixOperator:
+                        keys.add(posCursor++, Key.kMul);
+                        keys.add(posCursor++, Key.kBrOpen);
+                        break;
+                    case InfixOperator:
+                    case PrefixOperator:
+                        keys.add(posCursor++, Key.kBrOpen);
+                        break;
+                    case OpenBracket:
+                    default:
+                        // TODO: throw Logical error
+                        break;
+                }
             }
         }
-
     }
 
-    private Stack<Key> matchBrackets(int index) {
+    private int matchBracketsStatus(int index) {
         Stack<Key> parens = new Stack<Key>();
         for (Key k : keys) {
             if (k == Key.kBrOpen) {
                 parens.push(k);
-
             }
             if (k == Key.kBrClose) {
                 if (parens.empty()) {
                     // Mismatch parens at this point
-                    return null;
+                    return -1;
                 } else {
                     parens.pop();
                 }
             }
         }
-        return parens;
+        return parens.size();
     }
 
     private void addKeyOperation(Key k) {
         switch (k) {
             case kAns:
+                Log.d("Calc", getKeysArrayString());
                 tokens = new Tokenizer();
                 for (Key ky : keys) {
                     tokens.addToken(ky);
                 }
+                tokens.addToken(Key.kAns); // To finalise the tokens expression
+
                 Log.d("Calc",tokens.infix.toString());
                 Expression postfix = ExpressionEvaluator.infixToPostfix(tokens.infix);
-                Log.d("Calc",postfix.toString());
+                Log.d("Calc", postfix.toString());
                 ExpressionItem ans = ExpressionEvaluator.evaluateExpression(postfix);
                 Log.d("Calc", ans.toString());
+                resTV.setText(ans.toString());
                 break;
             case kDel:
                 if (posCursor > 0) {
@@ -341,6 +404,14 @@ public class KeyPressHandler {
             default:
                 break;
         }
+    }
+
+    private String getKeysArrayString() {
+        StringBuilder sb = new StringBuilder();
+        for (Key k : keys) {
+            sb.append(k.toString()).append(" ");
+        }
+        return sb.toString();
     }
 
     private void addKeyMoveOperation(Key k) {

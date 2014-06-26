@@ -171,7 +171,15 @@ public class AllOperators {
         }
         return null;
     }
-
+    public static TokenOperator getOperator(ButtonKeys.Key op) {
+        for (Map.Entry<Op, TokenOperator> item : allOps.entrySet()) {
+            TokenOperator to = item.getValue();
+            if (to.getKey() == op) {
+                return item.getValue();
+            }
+        }
+        return null;
+    }
     public static boolean isOperator(ButtonKeys.Key k) {
         for (Map.Entry<Op, TokenOperator> item : allOps.entrySet()) {
             TokenOperator tOp = item.getValue();
