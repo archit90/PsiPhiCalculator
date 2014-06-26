@@ -65,4 +65,8 @@ public class TokenOperator extends TokenObject {
          */
         return o1.precedence - o2.precedence;
     }
+
+    public String toString() {
+        return val.toString();
+    }
 }

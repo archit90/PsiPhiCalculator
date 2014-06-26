@@ -11,9 +11,9 @@ public class Expression {
     }
 
     @Override
-    public String toString(){
-        StringBuilder sb=new StringBuilder();
-        for(ExpressionItem ei:list) {
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (ExpressionItem ei : list) {
             sb.append(ei.toString()).append(" ");
         }
         return sb.toString();

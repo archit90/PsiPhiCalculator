@@ -21,13 +21,13 @@ public class ExpressionItem {
     public String toString() {
         switch (type) {
             case Bracket:
-                return ((TokenBracket) token).type.toString();
+                return ((TokenBracket) token).toString();
             case Constant:
-                return ((TokenConstant) token).val + "";
+                return ((TokenConstant) token).toString();
             case Variable:
-                return ((TokenVariable) token).name;
+                return ((TokenVariable) token).toString();
             case Operator:
-                return ((TokenOperator) token).getVal().toString();
+                return ((TokenOperator) token).toString();
             default:
                 return null;
         }

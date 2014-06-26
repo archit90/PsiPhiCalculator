@@ -1,16 +1,12 @@
 package com.friedapps.scientycalc;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.friedapps.scientycalc.calculator.Tokenizer;
 
 public class CalcActivity extends Activity {
 
@@ -30,8 +26,8 @@ public class CalcActivity extends Activity {
         exprTV.setText(exprStr);
         resultTV = (TextView) findViewById(R.id.txtResult);
         resultTV.setText(resultStr);
-        keyPressHandler = new KeyPressHandler(exprTV,resultTV);
-        Button resetBtn=(Button) findViewById(R.id.btnReset);
+        keyPressHandler = new KeyPressHandler(exprTV, resultTV);
+        Button resetBtn = (Button) findViewById(R.id.btnReset);
         resetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -82,17 +82,17 @@ public class ButtonKeys {
         return strs;
     }
 
-    public static String keysToString(ArrayList<Key> klist,int cursor) {
+    public static String keysToString(ArrayList<Key> klist, int cursor) {
         ArrayList<String> strs = keysToStrings(klist);
         StringBuilder ss = new StringBuilder();
-        for (int i=0;i<strs.size();++i) {
-            String si=strs.get(i);
-            if(cursor==i){
+        for (int i = 0; i < strs.size(); ++i) {
+            String si = strs.get(i);
+            if (cursor == i) {
                 ss.append("|");
             }
             ss.append(si);
         }
-        if(cursor==strs.size()){
+        if (cursor == strs.size()) {
             ss.append("|");
         }
         return ss.toString();

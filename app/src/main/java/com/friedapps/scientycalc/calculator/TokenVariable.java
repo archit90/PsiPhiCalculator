@@ -12,4 +12,8 @@ public class TokenVariable extends TokenObject {
         this.name = name;
         this.val = val;
     }
+
+    public String toString() {
+        return name + "(" + val + ")";
+    }
 }

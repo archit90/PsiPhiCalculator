@@ -30,9 +30,11 @@ public class Tokenizer {
             insertTokenInExpression(-1, tC, TokenType.Constant);
             // TODO: Evaluate answer
         } else if ((isDot = crumb == Key.kDot) ||
-                (isNum = (TokenConstant.getDigit(crumb) >= 0))) {
+                (isNum = ((num = TokenConstant.getDigit(crumb)) >= 0))) {
             if (lastTokenType == TokenType.Constant) {
-                if ((isDot && dnum.indexOf('.') < 0) || isNum) {
+                if ((isDot && dnum.indexOf('.') < 0)) {
+                    dnum += ".";
+                } else if (isNum) {
                     dnum += num;
                 } else {
                     // decimal point already exists
@@ -41,7 +43,7 @@ public class Tokenizer {
                     return false;
                 }
             } else {
-                dnum = "" + TokenConstant.getDigit(crumb);
+                dnum = "" + num;
             }
             lastTokenType = TokenType.Constant;
         } else if (AllOperators.isOperator(crumb)) {

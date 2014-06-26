@@ -53,4 +53,18 @@ public class TokenConstant extends TokenObject {
                 return -1;
         }
     }
+
+    public String toString() {
+        if (val >= 0) {
+            if (val == Math.floor(val)) {
+                return "" + ((long) val);
+            }
+        } else {
+            if (val == Math.ceil(val)) {
+                return "" + ((long) val);
+            }
+        }
+        return "" + val;
+    }
+
 }

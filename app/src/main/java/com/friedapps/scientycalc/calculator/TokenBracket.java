@@ -24,5 +24,9 @@ public class TokenBracket extends TokenObject {
         return (k == ButtonKeys.Key.kBrOpen || k == ButtonKeys.Key.kBrClose);
     }
 
+    public String toString() {
+        return "Brkt" + type.toString();
+    }
+
 
 }

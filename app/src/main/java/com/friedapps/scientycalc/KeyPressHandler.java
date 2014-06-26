@@ -24,11 +24,11 @@ public class KeyPressHandler {
     private TextView exprTV;
     private TextView resTV;
 
-    public KeyPressHandler(TextView tv,TextView rtv) {
+    public KeyPressHandler(TextView tv, TextView rtv) {
         keys = new ArrayList<Key>();
         posCursor = 0;
         exprTV = tv;
-        resTV=rtv;
+        resTV = rtv;
     }
 
     public void reset() {
@@ -389,7 +389,7 @@ public class KeyPressHandler {
                 }
                 tokens.addToken(Key.kAns); // To finalise the tokens expression
 
-                Log.d("Calc",tokens.infix.toString());
+                Log.d("Calc", tokens.infix.toString());
                 Expression postfix = ExpressionEvaluator.infixToPostfix(tokens.infix);
                 Log.d("Calc", postfix.toString());
                 ExpressionItem ans = ExpressionEvaluator.evaluateExpression(postfix);
