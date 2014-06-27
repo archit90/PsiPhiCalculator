@@ -366,7 +366,7 @@
                     android:layout_column="4"
                     android:layout_row="0"
                     android:onClick="onButtonClick"
-                    android:text="&lt;X|" />
+                    android:text="&lt;|" />
 
             </GridLayout>
         </GridLayout>
