@@ -44,17 +44,8 @@ public class KeyPressHandler {
     }
 
     public void addKey(Key k) {
-        int txtCursorPos = exprEdtxt.getCursorPosition(), ctrPos = 0;
-        posCursor = txtCursorPos;
-        for (int i = 0; i < keys.size(); i++) {
-            int ksize = keys.get(i).getLength();
-            if (ctrPos <= txtCursorPos) {
-                ctrPos += ksize;
-                posCursor -= ksize - 1;
-            } else {
-                break;
-            }
-        }
+        //int txtCursorPos = exprEdtxt.getCursorPosition(), ctrPos = 0;
+
         KeyKind currKeyKind = ButtonKeys.getKeyKind(k);
 
         if (keys.size() == 0) {
@@ -65,7 +56,7 @@ public class KeyPressHandler {
                 case PrefixOperator:
                 case OpenBracket:
                     keys.add(k);
-                    posCursor=1;
+                    posCursor = 1;
                     break;
             }
             exprEdtxt.setText(ButtonKeys.keysToString(keys, posCursor));
@@ -247,6 +238,8 @@ public class KeyPressHandler {
         Key prevKey = keys.get(posCursor - 1);
         KeyKind prevKeyKind = ButtonKeys.getKeyKind(prevKey);
         switch (prevKeyKind) {
+            case OpenBracket:
+            case InfixOperator:
             case PrefixOperator:
                 // k is current key to be inputted
                 if (k == Key.kPlusMinus) {
@@ -258,6 +251,8 @@ public class KeyPressHandler {
                     }
                     if (prevKey == Key.kPlusMinus) {
                         keys.remove(--posCursor);
+                        if (keys.get(posCursor - 1) == Key.kBrOpen)
+                            keys.remove(--posCursor);
                     } else {
                         keys.add(posCursor++, Key.kBrOpen);
                         keys.add(posCursor++, k);
@@ -267,12 +262,6 @@ public class KeyPressHandler {
                     if (addOpenBracket)
                         keys.add(posCursor++, Key.kBrOpen);
                 }
-                break;
-            case OpenBracket:
-            case InfixOperator:
-                keys.add(posCursor++, k);
-                if (addOpenBracket)
-                    keys.add(posCursor++, Key.kBrOpen);
                 break;
             case Numeric:
             case Variable:
@@ -439,12 +428,6 @@ public class KeyPressHandler {
             case kMoveRight:
                 if (posCursor < keys.size())
                     ++posCursor;
-                break;
-            case kMoveLeftEnd:
-                posCursor = 0;
-                break;
-            case kMoveRightEnd:
-                posCursor = keys.size();
                 break;
             default:
                 break;

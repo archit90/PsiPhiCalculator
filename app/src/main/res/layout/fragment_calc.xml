@@ -317,7 +317,8 @@
                     android:layout_column="1"
                     android:layout_row="3"
                     android:onClick="onButtonClick"
-                    android:text="=" />
+                    android:text="="
+                    android:longClickable="false" />
             </GridLayout>
 
             <GridLayout
@@ -330,23 +331,16 @@
                 android:columnCount="5"
                 android:rowCount="1">
 
-                <Button
-                    android:id="@+id/btnMvLeftEnd"
-                    style="@style/MyButtonStyleSmallNumpad"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_row="0"
-                    android:onClick="onButtonClick"
-                    android:text="|&lt;=" />
 
                 <Button
                     android:id="@+id/btnMvLeft"
                     style="@style/MyButtonStyleSmallNumpad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
+                    android:layout_column="0"
                     android:layout_row="0"
+                    android:layout_columnSpan="2"
+                    android:layout_gravity="fill"
                     android:onClick="onButtonClick"
                     android:text="&lt;=" />
 
@@ -358,18 +352,11 @@
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:layout_row="0"
+                    android:layout_columnSpan="2"
+                    android:layout_gravity="fill"
                     android:onClick="onButtonClick"
                     android:text="=&gt;" />
 
-                <Button
-                    android:id="@+id/btnMvRightEnd"
-                    style="@style/MyButtonStyleSmallNumpad"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="3"
-                    android:layout_row="0"
-                    android:onClick="onButtonClick"
-                    android:text="=&gt;|" />
 
                 <Button
                     android:id="@+id/btnDel"

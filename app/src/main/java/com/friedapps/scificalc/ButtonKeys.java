@@ -40,7 +40,7 @@ public class ButtonKeys {
         kAdd, kSubt, kMul, kDiv, kExp, kMod,
         kPlusMinus, kSin, kCos, kTan, kLog,
         kBrOpen, kBrClose, kAns, kDel,
-        kMoveLeft, kMoveRight, kMoveRightEnd, kMoveLeftEnd;
+        kMoveLeft, kMoveRight;
 
         public String toString() {
             return getKeySymbol(this);
@@ -125,8 +125,6 @@ public class ButtonKeys {
 
         keyMap.put(R.id.btnMvLeft, Key.kMoveLeft);
         keyMap.put(R.id.btnMvRight, Key.kMoveRight);
-        keyMap.put(R.id.btnMvLeftEnd, Key.kMoveLeftEnd);
-        keyMap.put(R.id.btnMvRightEnd, Key.kMoveRightEnd);
     }
 
     static {
@@ -157,8 +155,6 @@ public class ButtonKeys {
 
         keyDetailMap.put(Key.kMoveLeft, new KeyDetail(0, "", KeyKind.MoveOperation));
         keyDetailMap.put(Key.kMoveRight, new KeyDetail(0, "", KeyKind.MoveOperation));
-        keyDetailMap.put(Key.kMoveLeftEnd, new KeyDetail(0, "", KeyKind.MoveOperation));
-        keyDetailMap.put(Key.kMoveRightEnd, new KeyDetail(0, "", KeyKind.MoveOperation));
 
         keyDetailMap.put(Key.kSin, new KeyDetail(3, "Sin", KeyKind.PrefixOperator));
         keyDetailMap.put(Key.kCos, new KeyDetail(3, "Cos", KeyKind.PrefixOperator));

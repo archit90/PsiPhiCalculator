@@ -25,8 +25,7 @@ public class EditTextExtended extends EditText {
 
             @Override
             public void afterTextChanged(Editable s) {
-                cursor = getSelectionStart();
-                setSelection(cursor);
+
             }
         });
     }
