@@ -42,10 +42,11 @@ public class ButtonKeys {
         kBrOpen, kBrClose, kAns, kDel,
         kMoveLeft, kMoveRight, kMoveRightEnd, kMoveLeftEnd;
 
-        public String toString(){
+        public String toString() {
             return getKeySymbol(this);
         }
-        public int getLength(){
+
+        public int getLength() {
             return getKeyLength(this);
         }
     }
