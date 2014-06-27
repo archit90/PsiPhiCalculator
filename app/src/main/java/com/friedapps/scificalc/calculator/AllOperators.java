@@ -1,10 +1,10 @@
-package com.friedapps.scientycalc.calculator;
+package com.friedapps.scificalc.calculator;
 
-import com.friedapps.scientycalc.ButtonKeys;
-import com.friedapps.scientycalc.calculator.TokenOperator.Op;
-import com.friedapps.scientycalc.calculator.TokenOperator.OpAssoc;
-import com.friedapps.scientycalc.calculator.TokenOperator.OpKind;
-import com.friedapps.scientycalc.calculator.TokenOperator.OpType;
+import com.friedapps.scificalc.ButtonKeys;
+import com.friedapps.scificalc.calculator.TokenOperator.Op;
+import com.friedapps.scificalc.calculator.TokenOperator.OpAssoc;
+import com.friedapps.scificalc.calculator.TokenOperator.OpKind;
+import com.friedapps.scificalc.calculator.TokenOperator.OpType;
 
 import java.util.HashMap;
 import java.util.Map;

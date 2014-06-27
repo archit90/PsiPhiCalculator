@@ -1,4 +1,4 @@
-package com.friedapps.scientycalc.calculator;
+package com.friedapps.scificalc.calculator;
 
 public class TokenVariable extends TokenObject {
     public String name;

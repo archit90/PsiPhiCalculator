@@ -1,4 +1,4 @@
-package com.friedapps.scientycalc;
+package com.friedapps.scificalc;
 
 import java.util.ArrayList;
 import java.util.HashMap;

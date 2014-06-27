@@ -1,4 +1,4 @@
-package com.friedapps.scientycalc;
+package com.friedapps.scificalc;
 
 import android.content.Context;
 import android.util.AttributeSet;

@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.friedapps.scientycalc.EditTextExtended
+        <com.friedapps.scificalc.EditTextExtended
             android:id="@+id/edtxtCalcExpr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
             android:layout_gravity="center"
             android:hint="Expression" />
 
-        <com.friedapps.scientycalc.EditTextExtended
+        <com.friedapps.scificalc.EditTextExtended
             android:id="@+id/edtxtResult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,13 +1,13 @@
-package com.friedapps.scientycalc;
+package com.friedapps.scificalc;
 
 import android.util.Log;
 
-import com.friedapps.scientycalc.ButtonKeys.Key;
-import com.friedapps.scientycalc.ButtonKeys.KeyKind;
-import com.friedapps.scientycalc.calculator.Expression;
-import com.friedapps.scientycalc.calculator.ExpressionEvaluator;
-import com.friedapps.scientycalc.calculator.ExpressionItem;
-import com.friedapps.scientycalc.calculator.Tokenizer;
+import com.friedapps.scificalc.ButtonKeys.Key;
+import com.friedapps.scificalc.ButtonKeys.KeyKind;
+import com.friedapps.scificalc.calculator.Expression;
+import com.friedapps.scificalc.calculator.ExpressionEvaluator;
+import com.friedapps.scificalc.calculator.ExpressionItem;
+import com.friedapps.scificalc.calculator.Tokenizer;
 
 import java.util.ArrayList;
 import java.util.Stack;
@@ -58,14 +58,14 @@ public class KeyPressHandler {
         KeyKind currKeyKind = ButtonKeys.getKeyKind(k);
 
         if (keys.size() == 0) {
-            // TODO remove this ugly code
+            // TODO remove this ugly code for handling first char
             switch (currKeyKind) {
                 case Numeric:
                 case Variable:
                 case PrefixOperator:
                 case OpenBracket:
                     keys.add(k);
-                    ++posCursor;
+                    posCursor=1;
                     break;
             }
             exprEdtxt.setText(ButtonKeys.keysToString(keys, posCursor));

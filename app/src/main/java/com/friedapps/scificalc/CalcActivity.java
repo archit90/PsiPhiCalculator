@@ -1,4 +1,4 @@
-package com.friedapps.scientycalc;
+package com.friedapps.scificalc;
 
 import android.app.Activity;
 import android.os.Bundle;

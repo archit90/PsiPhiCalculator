@@ -1,11 +1,11 @@
-package com.friedapps.scientycalc.calculator;
+package com.friedapps.scificalc.calculator;
 
 
 import android.util.Log;
 
-import com.friedapps.scientycalc.ButtonKeys.Key;
-import com.friedapps.scientycalc.calculator.ExpressionItem.TokenType;
-import com.friedapps.scientycalc.calculator.TokenBracket.BracketType;
+import com.friedapps.scificalc.ButtonKeys.Key;
+import com.friedapps.scificalc.calculator.ExpressionItem.TokenType;
+import com.friedapps.scificalc.calculator.TokenBracket.BracketType;
 
 public class Tokenizer {
 

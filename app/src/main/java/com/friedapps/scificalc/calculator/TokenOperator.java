@@ -1,6 +1,6 @@
-package com.friedapps.scientycalc.calculator;
+package com.friedapps.scificalc.calculator;
 
-import com.friedapps.scientycalc.ButtonKeys;
+import com.friedapps.scificalc.ButtonKeys;
 
 public class TokenOperator extends TokenObject {
     private Op val;
