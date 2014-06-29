@@ -15,26 +15,76 @@
             android:id="@+id/edtxtCalcExpr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:editable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:layout_gravity="center"
             android:hint="Expression" />
 
         <com.friedapps.scificalc.EditTextExtended
             android:id="@+id/edtxtResult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:layout_gravity="right"
             android:hint="Result" />
+
+        <GridLayout
+            android:id="@+id/gridCalc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_columnSpan="3"
+            android:layout_gravity="center"
+            android:layout_row="0"
+            android:columnCount="5"
+            android:rowCount="1">
+
+
+            <Button
+                android:id="@+id/btnMvLeft"
+                style="@style/MyButtonStyleSmallNumpad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_columnSpan="2"
+                android:layout_gravity="fill"
+                android:layout_row="0"
+                android:onClick="onButtonClick"
+                android:hint="&lt;=" />
+
+
+            <Button
+                android:id="@+id/btnMvRight"
+                style="@style/MyButtonStyleSmallNumpad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_columnSpan="2"
+                android:layout_gravity="fill"
+                android:layout_row="0"
+                android:onClick="onButtonClick"
+                android:hint="=&gt;" />
+
+
+            <Button
+                android:id="@+id/btnDel"
+                style="@style/MyButtonStyleSmallNumpad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="4"
+                android:layout_row="0"
+                android:onClick="onButtonClick"
+                android:hint="Del" />
+
+        </GridLayout>
 
         <GridLayout
             android:id="@+id/gridSc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="left"
             android:padding="4dp">
 
             <GridLayout
@@ -54,7 +104,7 @@
                     android:layout_column="0"
                     android:layout_row="0"
                     android:onClick="onButtonClick"
-                    android:text="Sin" />
+                    android:hint="Sin" />
 
                 <Button
                     android:id="@+id/btnCos"
@@ -64,7 +114,7 @@
                     android:layout_column="1"
                     android:layout_row="0"
                     android:onClick="onButtonClick"
-                    android:text="Cos" />
+                    android:hint="Cos" />
 
                 <Button
                     android:id="@+id/btnTan"
@@ -74,7 +124,7 @@
                     android:layout_column="2"
                     android:layout_row="0"
                     android:onClick="onButtonClick"
-                    android:text="Tan" />
+                    android:hint="Tan" />
 
                 <Button
                     android:id="@+id/btnLog"
@@ -84,7 +134,7 @@
                     android:layout_column="3"
                     android:layout_row="0"
                     android:onClick="onButtonClick"
-                    android:text="Log" />
+                    android:hint="Log" />
             </GridLayout>
         </GridLayout>
 
@@ -112,7 +162,7 @@
                     android:layout_column="0"
                     android:layout_row="0"
                     android:onClick="onButtonClick"
-                    android:text="7" />
+                    android:hint="7" />
 
                 <Button
                     android:id="@+id/btn8"
@@ -122,7 +172,7 @@
                     android:layout_column="1"
                     android:layout_row="0"
                     android:onClick="onButtonClick"
-                    android:text="8" />
+                    android:hint="8" />
 
                 <Button
                     android:id="@+id/btn9"
@@ -132,7 +182,7 @@
                     android:layout_column="2"
                     android:layout_row="0"
                     android:onClick="onButtonClick"
-                    android:text="9" />
+                    android:hint="9" />
 
 
                 <Button
@@ -143,7 +193,7 @@
                     android:layout_column="0"
                     android:layout_row="1"
                     android:onClick="onButtonClick"
-                    android:text="4" />
+                    android:hint="4" />
 
                 <Button
                     android:id="@+id/btn5"
@@ -153,7 +203,7 @@
                     android:layout_column="1"
                     android:layout_row="1"
                     android:onClick="onButtonClick"
-                    android:text="5" />
+                    android:hint="5" />
 
                 <Button
                     android:id="@+id/btn6"
@@ -163,7 +213,7 @@
                     android:layout_column="2"
                     android:layout_row="1"
                     android:onClick="onButtonClick"
-                    android:text="6" />
+                    android:hint="6" />
 
 
                 <Button
@@ -174,7 +224,7 @@
                     android:layout_column="0"
                     android:layout_row="2"
                     android:onClick="onButtonClick"
-                    android:text="1" />
+                    android:hint="1" />
 
                 <Button
                     android:id="@+id/btn2"
@@ -184,7 +234,7 @@
                     android:layout_column="1"
                     android:layout_row="2"
                     android:onClick="onButtonClick"
-                    android:text="2" />
+                    android:hint="2" />
 
                 <Button
                     android:id="@+id/btn3"
@@ -194,7 +244,7 @@
                     android:layout_column="2"
                     android:layout_row="2"
                     android:onClick="onButtonClick"
-                    android:text="3" />
+                    android:hint="3" />
 
 
                 <Button
@@ -205,7 +255,7 @@
                     android:layout_column="1"
                     android:layout_row="3"
                     android:onClick="onButtonClick"
-                    android:text="." />
+                    android:hint="." />
 
                 <Button
                     android:id="@+id/btn0"
@@ -215,7 +265,7 @@
                     android:layout_column="0"
                     android:layout_row="3"
                     android:onClick="onButtonClick"
-                    android:text="0" />
+                    android:hint="0" />
 
                 <Button
                     android:id="@+id/btnPlusMinus"
@@ -225,7 +275,7 @@
                     android:layout_column="2"
                     android:layout_row="3"
                     android:onClick="onButtonClick"
-                    android:text="+/-" />
+                    android:hint="+/-" />
 
             </GridLayout>
 
@@ -247,7 +297,7 @@
                     android:layout_column="0"
                     android:layout_row="0"
                     android:onClick="onButtonClick"
-                    android:text="+" />
+                    android:hint="+" />
 
                 <Button
                     android:id="@+id/btnSubtract"
@@ -257,7 +307,7 @@
                     android:layout_column="0"
                     android:layout_row="1"
                     android:onClick="onButtonClick"
-                    android:text="-" />
+                    android:hint="-" />
 
                 <Button
                     android:id="@+id/btnMultiply"
@@ -267,7 +317,7 @@
                     android:layout_column="0"
                     android:layout_row="2"
                     android:onClick="onButtonClick"
-                    android:text="*" />
+                    android:hint="&#215;" />
 
                 <Button
                     android:id="@+id/btnDivide"
@@ -277,27 +327,7 @@
                     android:layout_column="0"
                     android:layout_row="3"
                     android:onClick="onButtonClick"
-                    android:text="÷" />
-
-                <Button
-                    android:id="@+id/btnModulus"
-                    style="@style/MyButtonStyleSmallNumpad"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_row="0"
-                    android:onClick="onButtonClick"
-                    android:text="%" />
-
-                <Button
-                    android:id="@+id/btnExponent"
-                    style="@style/MyButtonStyleSmallNumpad"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_row="1"
-                    android:onClick="onButtonClick"
-                    android:text="^" />
+                    android:hint="÷" />
 
                 <Button
                     android:id="@+id/btnBrackets"
@@ -305,83 +335,73 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
-                    android:layout_row="2"
+                    android:layout_row="0"
                     android:onClick="onButtonClick"
-                    android:text="( )" />
+                    android:hint="( )" />
+
 
                 <Button
-                    android:id="@+id/btnAnswer"
+                    android:id="@+id/btnModulus"
+                    style="@style/MyButtonStyleSmallNumpad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_row="1"
+                    android:onClick="onButtonClick"
+                    android:hint="%" />
+
+                <Button
+                    android:id="@+id/btnExponent"
+                    style="@style/MyButtonStyleSmallNumpad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_row="2"
+                    android:onClick="onButtonClick"
+                    android:hint="^" />
+
+                <Button
+                    android:id="@+id/btnNRoot"
                     style="@style/MyButtonStyleSmallNumpad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:layout_row="3"
                     android:onClick="onButtonClick"
-                    android:text="="
-                    android:longClickable="false" />
+                    android:hint="&#8730;" />
             </GridLayout>
 
-            <GridLayout
-                android:id="@+id/gridCalc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_columnSpan="3"
-                android:layout_row="0"
-                android:columnCount="5"
-                android:rowCount="1">
 
-
-                <Button
-                    android:id="@+id/btnMvLeft"
-                    style="@style/MyButtonStyleSmallNumpad"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_row="0"
-                    android:layout_columnSpan="2"
-                    android:layout_gravity="fill"
-                    android:onClick="onButtonClick"
-                    android:text="&lt;=" />
-
-
-                <Button
-                    android:id="@+id/btnMvRight"
-                    style="@style/MyButtonStyleSmallNumpad"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:layout_row="0"
-                    android:layout_columnSpan="2"
-                    android:layout_gravity="fill"
-                    android:onClick="onButtonClick"
-                    android:text="=&gt;" />
-
-
-                <Button
-                    android:id="@+id/btnDel"
-                    style="@style/MyButtonStyleSmallNumpad"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="4"
-                    android:layout_row="0"
-                    android:onClick="onButtonClick"
-                    android:text="&lt;|" />
-
-            </GridLayout>
         </GridLayout>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="48dp" />
 
-        <Button
-            android:id="@+id/btnReset"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:padding="2dp"
-            android:layout_gravity="center"
-            android:text="Reset"
-            android:textSize="18sp" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnReset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:hint="Reset"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:onClick="onButtonClick"
+                android:hint="Answer"
+                android:textSize="18sp" />
+        </LinearLayout>
+
     </LinearLayout>
 </RelativeLayout>
