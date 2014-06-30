@@ -96,9 +96,11 @@ public class ButtonKeys {
         keyMap.put(R.id.btnLog10, Key.kLog10);
         keyMap.put(R.id.btnLog2, Key.kLog2);
         keyMap.put(R.id.btnLn, Key.kLn);
+        keyMap.put(R.id.btnFact,Key.kFact);
 
         keyMap.put(R.id.btnMvLeft, Key.kMoveLeft);
         keyMap.put(R.id.btnMvRight, Key.kMoveRight);
+        // up, down buttons
     }
 
     static {
