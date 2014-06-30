@@ -32,7 +32,7 @@ public class TokenOperator extends TokenObject {
     public enum Op {
         Minus,
         Add, Subtract, Multiply, Divide, Exponent, Modulus,
-        Sin, Cos, Tan, Log
+        Sin, Cos, Tan, Log10, Ln, Log2
     }
 
     public enum OpAssoc {

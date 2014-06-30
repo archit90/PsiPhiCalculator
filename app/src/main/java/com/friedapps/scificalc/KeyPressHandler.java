@@ -1,5 +1,6 @@
 package com.friedapps.scificalc;
 
+import android.text.Html;
 import android.util.Log;
 
 import com.friedapps.scificalc.ButtonKeys.Key;
@@ -59,7 +60,7 @@ public class KeyPressHandler {
                     posCursor = 1;
                     break;
             }
-            exprEdtxt.setText(ButtonKeys.keysToString(keys, posCursor));
+            exprEdtxt.setText(ButtonKeys.keysToStringExpression(keys, posCursor));
             return;
         }
 
@@ -92,7 +93,8 @@ public class KeyPressHandler {
 
         }
         // TODO: improve this method of displaying expression in exprEdtxt
-        exprEdtxt.setText(ButtonKeys.keysToString(keys, posCursor));
+        String exprStr = ButtonKeys.keysToStringExpression(keys, posCursor);
+        exprEdtxt.setText(Html.fromHtml(exprStr));
     }
 
     private void addKeyNumeric(Key k) {
@@ -207,7 +209,9 @@ public class KeyPressHandler {
             case kSin:
             case kCos:
             case kTan:
-            case kLog:
+            case kLog10:
+            case kLn:
+            case kLog2:
                 addOpenBracket = true;
                 break;
             default:
@@ -399,7 +403,7 @@ public class KeyPressHandler {
                 Log.d("Calc", postfix.toString());
                 ExpressionItem ans = ExpressionEvaluator.evaluateExpression(postfix);
                 Log.d("Calc", ans.toString());
-                resEdtxt.setText(ans.toString());
+                resEdtxt.setText(Html.fromHtml(ans.toString()));
                 break;
             case kDel:
                 if (posCursor > 0) {

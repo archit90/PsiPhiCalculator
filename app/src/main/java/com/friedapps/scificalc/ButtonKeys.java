@@ -82,15 +82,20 @@ public class ButtonKeys {
         keyMap.put(R.id.btnDivide, Key.kDiv);
         keyMap.put(R.id.btnModulus, Key.kMod);
         keyMap.put(R.id.btnExponent, Key.kExp);
+        keyMap.put(R.id.btnNRoot, Key.kRoot);
 
         keyMap.put(R.id.btnBrackets, Key.kBrOpen);
         keyMap.put(R.id.btnAnswer, Key.kAns);
         keyMap.put(R.id.btnDel, Key.kDel);
 
+        keyMap.put(R.id.btnHyp, Key.kTHyp);
         keyMap.put(R.id.btnSin, Key.kSin);
         keyMap.put(R.id.btnCos, Key.kCos);
         keyMap.put(R.id.btnTan, Key.kTan);
-        keyMap.put(R.id.btnLog, Key.kLog10);
+        keyMap.put(R.id.btnAbs, Key.kAbs);
+        keyMap.put(R.id.btnLog10, Key.kLog10);
+        keyMap.put(R.id.btnLog2, Key.kLog2);
+        keyMap.put(R.id.btnLn, Key.kLn);
 
         keyMap.put(R.id.btnMvLeft, Key.kMoveLeft);
         keyMap.put(R.id.btnMvRight, Key.kMoveRight);
@@ -135,8 +140,10 @@ public class ButtonKeys {
         keyDetailMap.put(Key.kReset, new KeyDetail(0, "", "Reset", KeyKind.Operation));
         keyDetailMap.put(Key.kAns, new KeyDetail(0, "", "Ans", KeyKind.Operation));
 
-        keyDetailMap.put(Key.kMoveLeft, new KeyDetail(0, "","<", KeyKind.MoveOperation));
-        keyDetailMap.put(Key.kMoveRight, new KeyDetail(0, "",">", KeyKind.MoveOperation));
+        keyDetailMap.put(Key.kMoveLeft, new KeyDetail(0, "", "&lt;", KeyKind.MoveOperation));
+        keyDetailMap.put(Key.kMoveRight, new KeyDetail(0, "", "&gt;", KeyKind.MoveOperation));
+        keyDetailMap.put(Key.kHistUp, new KeyDetail(0, "", "Up", KeyKind.MoveOperation));
+        keyDetailMap.put(Key.kHistDown, new KeyDetail(0, "", "Dn", KeyKind.MoveOperation));
 
 
     }
@@ -157,6 +164,10 @@ public class ButtonKeys {
         return keyDetailMap.get(k).getKind();
     }
 
+    public static String getKeyButtonSymbol(Key k) {
+        return keyDetailMap.get(k).getButtonSymbol();
+    }
+
     private static ArrayList<String> keysToStrings(ArrayList<Key> klist) {
         ArrayList<String> strs = new ArrayList<String>(klist.size());
         for (Key k : klist) {
@@ -165,7 +176,7 @@ public class ButtonKeys {
         return strs;
     }
 
-    public static String keysToString(ArrayList<Key> klist, int cursor) {
+    public static String keysToStringExpression(ArrayList<Key> klist, int cursor) {
         ArrayList<String> strs = keysToStrings(klist);
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < strs.size(); ++i) {

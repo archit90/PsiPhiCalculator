@@ -24,7 +24,9 @@ public class AllOperators {
         allOps.put(Op.Sin, new TokenOperator(Op.Sin, ButtonKeys.Key.kSin, 800, OpAssoc.Right, OpType.Unary, OpKind.prefix));
         allOps.put(Op.Cos, new TokenOperator(Op.Cos, ButtonKeys.Key.kCos, 800, OpAssoc.Right, OpType.Unary, OpKind.prefix));
         allOps.put(Op.Tan, new TokenOperator(Op.Tan, ButtonKeys.Key.kTan, 800, OpAssoc.Right, OpType.Unary, OpKind.prefix));
-        allOps.put(Op.Log, new TokenOperator(Op.Log, ButtonKeys.Key.kLog, 800, OpAssoc.Right, OpType.Unary, OpKind.prefix));
+        allOps.put(Op.Log10, new TokenOperator(Op.Log10, ButtonKeys.Key.kLog10, 800, OpAssoc.Right, OpType.Unary, OpKind.prefix));
+        allOps.put(Op.Ln, new TokenOperator(Op.Ln, ButtonKeys.Key.kLn, 800, OpAssoc.Right, OpType.Unary, OpKind.prefix));
+        allOps.put(Op.Log2, new TokenOperator(Op.Log2, ButtonKeys.Key.kLog2, 800, OpAssoc.Right, OpType.Unary, OpKind.prefix));
     }
 
     private static final Map<Op, OpOperation> allOperations = new HashMap<Op, OpOperation>();
@@ -140,7 +142,18 @@ public class AllOperators {
                 return new TokenConstant(Math.tan(op.val));
             }
         });
-        allOperations.put(Op.Log, new OpOperation() {
+        allOperations.put(Op.Log10, new OpOperation() {
+            @Override
+            public TokenConstant calcBinary(TokenConstant opL, TokenConstant opR) {
+                return null;
+            }
+
+            @Override
+            public TokenConstant calcUnary(TokenConstant op) {
+                return new TokenConstant(Math.log10(op.val));
+            }
+        });
+        allOperations.put(Op.Ln, new OpOperation() {
             @Override
             public TokenConstant calcBinary(TokenConstant opL, TokenConstant opR) {
                 return null;
@@ -149,6 +162,17 @@ public class AllOperators {
             @Override
             public TokenConstant calcUnary(TokenConstant op) {
                 return new TokenConstant(Math.log(op.val));
+            }
+        });
+        allOperations.put(Op.Log2, new OpOperation() {
+            @Override
+            public TokenConstant calcBinary(TokenConstant opL, TokenConstant opR) {
+                return null;
+            }
+
+            @Override
+            public TokenConstant calcUnary(TokenConstant op) {
+                return new TokenConstant(Math.log(op.val) / Math.log(2));
             }
         });
 

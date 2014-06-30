@@ -76,7 +76,7 @@
                 android:layout_column="4"
                 android:layout_row="0"
                 android:onClick="onButtonClick"
-                android:hint="Del" />
+                android:hint="&#9003;" />
 
         </GridLayout>
 
@@ -84,7 +84,7 @@
             android:id="@+id/gridSc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_gravity="center"
             android:padding="4dp">
 
             <GridLayout
@@ -93,15 +93,25 @@
                 android:layout_height="wrap_content"
                 android:layout_column="0"
                 android:layout_row="0"
-                android:columnCount="4"
-                android:rowCount="1">
+                android:columnCount="5"
+                android:rowCount="3">
+
+                <Button
+                    android:id="@+id/btnHyp"
+                    style="@style/MyButtonStyleSmallAddonPad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_row="0"
+                    android:onClick="onButtonClick"
+                    android:hint="Hyp" />
 
                 <Button
                     android:id="@+id/btnSin"
                     style="@style/MyButtonStyleSmallAddonPad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_column="0"
+                    android:layout_column="1"
                     android:layout_row="0"
                     android:onClick="onButtonClick"
                     android:hint="Sin" />
@@ -111,7 +121,7 @@
                     style="@style/MyButtonStyleSmallAddonPad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_column="1"
+                    android:layout_column="2"
                     android:layout_row="0"
                     android:onClick="onButtonClick"
                     android:hint="Cos" />
@@ -121,20 +131,72 @@
                     style="@style/MyButtonStyleSmallAddonPad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_column="2"
+                    android:layout_column="3"
                     android:layout_row="0"
                     android:onClick="onButtonClick"
                     android:hint="Tan" />
 
                 <Button
-                    android:id="@+id/btnLog"
+                    android:id="@+id/btnAbs"
+                    style="@style/MyButtonStyleSmallAddonPad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="4"
+                    android:layout_row="0"
+                    android:onClick="onButtonClick"
+                    android:hint="Abs" />
+
+                <Button
+                    android:id="@+id/btnLog10"
+                    style="@style/MyButtonStyleSmallAddonPad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_row="1"
+                    android:onClick="onButtonClick"
+                    android:hint="Log10" />
+
+                <Button
+                    android:id="@+id/btnLog2"
+                    style="@style/MyButtonStyleSmallAddonPad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_row="1"
+                    android:onClick="onButtonClick"
+                    android:hint="Log2" />
+
+                <Button
+                    android:id="@+id/btnLn"
+                    style="@style/MyButtonStyleSmallAddonPad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_row="1"
+                    android:onClick="onButtonClick"
+                    android:hint="Ln" />
+
+                <Button
+                    android:id="@+id/btnFact"
                     style="@style/MyButtonStyleSmallAddonPad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="3"
-                    android:layout_row="0"
+                    android:layout_row="1"
                     android:onClick="onButtonClick"
-                    android:hint="Log" />
+                    android:hint="x!" />
+
+                <Button
+                    android:id="@+id/btnMode"
+                    style="@style/MyButtonStyleSmallAddonPad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="4"
+                    android:layout_row="1"
+                    android:onClick="onButtonClick"
+                    android:textSize="18dp"
+                    android:hint="Mode" />
+
             </GridLayout>
         </GridLayout>
 
@@ -374,9 +436,6 @@
 
         </GridLayout>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="48dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
